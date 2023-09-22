@@ -1,5 +1,5 @@
 {
-  "name": "@tristangodfrey/config",
+  "name": "figure-config",
   "version": "0.0.1",
   "module": "index.ts",
   "main": "./src/index.ts",
