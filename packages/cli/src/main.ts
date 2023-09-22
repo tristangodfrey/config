@@ -15,7 +15,7 @@ import prompts from 'prompts';
 import {Command, Option} from 'commander';
 import {createVariableGroup} from "./utils/azure-devops.ts";
 import * as packageJson from "./../package.json"
-import {generateSecret} from "./utils/kubernetes.ts";
+import {generateConfigMap, generateSecret} from "./utils/kubernetes.ts";
 
 const program = new Command();
 
@@ -32,8 +32,9 @@ if (!CONFIG_FOLDER_PATH) {
 
 program.version(packageJson.version)
 
-program.command('kubernetes')
-    .command('secret')
+const kubernetes = program.command('kubernetes')
+
+kubernetes.command('secret')
     .argument('[appName]', 'Application name')
     .option('-e, --env <environment>', 'Environment specific config file')
     .addOption(new Option('-vs, --value-substitution <mode>', 'One of: [azure_variable, value]')
@@ -46,6 +47,18 @@ program.command('kubernetes')
 
     })
 
+kubernetes.command('configmap')
+    .argument('[appName]', 'Application name')
+    .option('-e, --env <environment>', 'Environment specific config file')
+    .addOption(new Option('-vs, --value-substitution <mode>', 'One of: [azure_variable, value]')
+        .choices(['azure_variable', 'value']))
+    .action((appName, options) => {
+
+        const schema = getSchema(CONFIG_FOLDER_PATH)
+
+        generateConfigMap(schema, 'azure_variable')
+
+    })
 
 program.command('validate')
     .description('Validate a configuration against a config schema')
