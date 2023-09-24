@@ -1,47 +1,81 @@
 import prompts from "prompts";
-import axios from "axios";
+import axios, {Axios, AxiosError} from "axios";
+import { VariableGroupsAPI } from "../devops-api";
+import {VariableGroupParameters} from "../devops-api/generated";
 
-export const createVariableGroup = async (variables: any, groupName: string) => {
-
-    const response = await prompts({
-        type: 'text',
-        name: 'pat',
-        message: 'Enter Azure PAT'
-    });
-
-    const TOKEN: string = response.pat;
+export const createVariableGroup = async (
+    variables: any,
+    groupName: string,
+    pat: string,
+    org: string,
+    project: string
+) => {
 
     const cleanName = groupName.replace('/', '-').replace('@', '')
 
-    axios.post(
-        `https://dev.azure.com/ETO-CICD/SIERRA/_apis/distributedtask/variablegroups?api-version=6.0`,
-        {
-            description: "foobar",
-            name: cleanName,
-            variables,
-            variableGroupProjectReferences: [
-                {
-                    name: cleanName,
-                    description: `Environment variables`,
-                    projectReference: {
-                        name: 'SIERRA'
-                    }
+    const api = new VariableGroupsAPI(pat, org, project);
+
+    const res = await api.getVariableGroups();
+
+    //@ts-ignore
+    const existing = res.value.find(vg => vg.name === cleanName)
+
+    const b: VariableGroupParameters = {
+        description: "foobar",
+        name: cleanName,
+        variables,
+        variableGroupProjectReferences: [
+            {
+                name: cleanName,
+                description: `Environment variables`,
+                projectReference: {
+                    name: project
                 }
-            ]
-        },
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Basic ${Buffer.from(`:${TOKEN}`).toString('base64')}`
             }
+        ]
+    }
+
+    if (existing) {
+
+        console.log(`Updating existing variable group: ${cleanName}`);
+
+        if (existing.id) {
+            try {
+                const res = await api.updateVariableGroup(existing.id.toString(), b)
+
+                if (res.status === 200) {
+                    console.log(`Variable group ${cleanName} updated.`)
+                } else {
+                    console.error(`Error updating variable group ${cleanName}`)
+                    // console.error(res)
+                }
+            } catch (e) {
+                console.error(e.response.data)
+            }
+
+
+
         }
-    )
-        .then(response => {
-            // Logic for waiting for each pipeline to finish could go here
-            // For now, let's just print the response for debugging
-            console.log("Pipeline Trigger Response:", response.data);
-        })
-        .catch(error => {
-            console.error("Failed to trigger pipeline:", error);
-        });
+
+
+    } else {
+        console.log(`Creating new variable group: ${cleanName}`)
+
+        const res = await api.createVariableGroup(b)
+
+        if (res.status === 200) {
+            console.log(`Variable group ${cleanName} created.`)
+        } else {
+            console.error(`Error creating variable group ${cleanName}`)
+        }
+    }
+
+
+
+
+
+    //Check if the variable group exists
+    // const res = await VariablegroupsService.variablegroupsAdd(org, b).catch((err) => console.error(err));
+
+    // console.log(res);
 }

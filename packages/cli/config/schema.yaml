@@ -1,0 +1,21 @@
+title: "Figure CLI config"
+type: object
+properties:
+  azureDevops:
+    type: object
+    properties:
+      pat:
+        type: string
+        env: "AZURE_PAT"
+      organisation:
+        type: string
+        env: "AZURE_ORG"
+      project:
+        type: string
+        env: "AZURE_PROJECT"
+    required:
+      - pat
+      - organisation
+      - project
+required:
+  - azureDevops

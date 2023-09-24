@@ -1,11 +1,14 @@
-import {EnvVar, getEnvVars} from "@tristangodfrey/config";
+import {EnvVar, EnvVarValue, FigureInstance} from "figure-config";
 import {ConfigMap, Secret} from "kubernetes-models/v1";
 
 const subAzure = (o: EnvVar[]) => o.reduce((o, curr) => ({...o, [curr.name]: `$(${curr.name})`}), {})
-const subValue = (o: EnvVar[]) => o.reduce((o, curr) => ({...o, [curr.name]: `$(${curr.name})`}), {})
+const subValue = (o: EnvVarValue[]) => o.reduce((o, curr) => ({...o, [curr.name]: curr.value}), {})
 
-export const generateSecret = (schema: any, mode: string) => {
-    const env = getEnvVars(schema)
+export const generateSecret = <T>(instance: FigureInstance<T>, mode: string) => {
+    const env = instance.env.getEnvVars();
+
+    console.debug(`Got env var values`);
+    console.debug(env);
 
     const secrets = env.filter(e => e.isSecret)
 
@@ -17,14 +20,17 @@ export const generateSecret = (schema: any, mode: string) => {
 
     if (mode === 'value') {
         //Get the values
-    }
-    const secret = new Secret({ data: kvPairs })
+        const values = instance.env.getEnvVarValues();
 
-    console.log(secret.toJSON());
+        kvPairs = subValue(values.filter(v => v.isSecret));
+    }
+    const secret = new Secret({ data: kvPairs, metadata: { name: instance.options.subSchema } })
+
+    return secret;
 }
 
-export const generateConfigMap = (schema: any, mode: string) => {
-    const env = getEnvVars(schema)
+export const generateConfigMap = <T>(instance: FigureInstance<T>, mode: string) => {
+    const env = instance.env.getEnvVars()
 
     const secrets = env.filter(e => ! e.isSecret)
 

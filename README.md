@@ -8,7 +8,7 @@ Language-agnostic configuration library. Learn once, use everywhere.
 
 ## Installation
 
-`npm install -g @tristangodfrey/config-cli`
+`npm install -g figure-config`
 
 `npm install figure --save`
 

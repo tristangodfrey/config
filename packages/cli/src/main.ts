@@ -2,26 +2,15 @@
 import * as path from "path";
 import {compile} from 'json-schema-to-typescript'
 import * as fs from "fs";
-import {fileURLToPath} from 'url';
-import {
-    configPath,
-    getEnvVars,
-    getSchema,
-    loadAndMergeConfig,
-    validate,
-    default as config
-} from "@tristangodfrey/config";
+import {figure, getPath, getSchema, Options} from "figure-config";
 import prompts from 'prompts';
 import {Command, Option} from 'commander';
 import {createVariableGroup} from "./utils/azure-devops.ts";
 import * as packageJson from "./../package.json"
 import {generateConfigMap, generateSecret} from "./utils/kubernetes.ts";
+import {FigureCLIConfig} from "./config.ts";
 
 const program = new Command();
-
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
 
 const CONFIG_FOLDER_PATH = process.env.CONFIG_FOLDER_PATH;
 
@@ -30,114 +19,156 @@ if (!CONFIG_FOLDER_PATH) {
     process.exit(1)
 }
 
-program.version(packageJson.version)
+program.version(packageJson.version).name('figure')
 
-const kubernetes = program.command('kubernetes')
+const kubernetes = program.command('kubernetes').description('Generate kubernetes resources')
+
+const OPTION_VS = new Option('-vs, --value-substitution <mode>', 'One of: [azure_variable, value]')
+    .choices(['azure_variable', 'value']).default('azure_variable');
+
+const OPTION_ENV = new Option('-e, --env <environment>', 'Environment specific config file');
+const OPTION_KUBE_NS = new Option('-ns --namespace <namespace>', 'Kubernetes namespace');
 
 kubernetes.command('secret')
     .argument('[appName]', 'Application name')
-    .option('-e, --env <environment>', 'Environment specific config file')
-    .addOption(new Option('-vs, --value-substitution <mode>', 'One of: [azure_variable, value]')
-        .choices(['azure_variable', 'value']))
-    .action((appName, options) => {
+    .addOption(OPTION_ENV)
+    .addOption(OPTION_KUBE_NS)
+    .addOption(OPTION_VS)
+    .action(async (appName, options) => {
+        const instance = await figure({
+            configFolderPath: CONFIG_FOLDER_PATH,
+            env: options.environment,
+            subSchema: appName
+        })
 
-        const schema = getSchema(CONFIG_FOLDER_PATH)
+        console.log(instance.config);
 
-        generateSecret(schema, 'azure_variable')
+        const secret = generateSecret(instance, options.valueSubstitution)
+
+        console.log(JSON.stringify(secret));
 
     })
 
 kubernetes.command('configmap')
     .argument('[appName]', 'Application name')
-    .option('-e, --env <environment>', 'Environment specific config file')
-    .addOption(new Option('-vs, --value-substitution <mode>', 'One of: [azure_variable, value]')
-        .choices(['azure_variable', 'value']))
-    .action((appName, options) => {
+    .addOption(OPTION_ENV)
+    .addOption(OPTION_VS)
+    .action(async (appName, options) => {
+
+        const instance = await figure({
+            configFolderPath: CONFIG_FOLDER_PATH,
+            env: options.environment,
+            subSchema: appName
+        })
 
         const schema = getSchema(CONFIG_FOLDER_PATH)
 
-        generateConfigMap(schema, 'azure_variable')
+        const cm = generateConfigMap(instance, options.valueSubstitution)
+
+    })
+
+program.command('set')
+    .description('Set a configuration value')
+    .argument('<path>', 'JSON Path to the configuration value (eg "app.kafka.url")')
+    .argument('<value>', 'Value to set')
+    .addOption(OPTION_ENV)
+    .action((path, value, options) => {
 
     })
 
 program.command('validate')
     .description('Validate a configuration against a config schema')
     .argument('[appName]', 'Application name')
-    .option('-e, --env <environment>', 'Environment specific config file')
-    .action((appName, options) => {
-
-        console.log(options);
-
-        const defaultConfigPath = configPath(CONFIG_FOLDER_PATH, 'default')
-        const envConfigPath = configPath(CONFIG_FOLDER_PATH, options.env ?? process.env.NODE_ENV)
-        const schemaPath = configPath(CONFIG_FOLDER_PATH, 'schema')
+    .addOption(OPTION_ENV)
+    .action(async (appName, options) => {
+        const config = await figure({
+            configFolderPath: CONFIG_FOLDER_PATH,
+            env: options.environment,
+            subSchema: appName
+        })
 
         console.log('Validating configuration...')
         console.log('Configuration files:')
-        console.log(`Default: ${defaultConfigPath}`);
-        console.log(`Environment (${options.env}): ${envConfigPath}`);
-        console.log(`Schema: ${schemaPath}`)
+        console.log(`Default: ${config.options.configFolderPath}`);
+        console.log(`Environment (${options.env}): ${config.options.env}`);
+        console.log(`Schema: ${config.options.schemaPath}`)
 
-        const schema = getSchema(options.schema ?? CONFIG_FOLDER_PATH)
 
-        const config = loadAndMergeConfig(
-            defaultConfigPath,
-            envConfigPath
-        )
+        const res = config.config;
 
-        const res = validate(schema, config, appName);
-
-        const messages = res.errors.map(err => err.message)
-
-        messages.length === 0 ? console.log('Configuration is valid!') : messages.forEach(m => console.error(m))
+        if (res) {
+            console.log('Configuration is valid!')
+        }
     })
 
 program.command('upload')
-    .description('Set remote configuration (Azure variable group) for a given package')
-    .argument('<package_name>', 'Name of the package to configure')
-    .action(async (packageName) => {
-        //Fetch config from schema
-        const schema = getSchema(CONFIG_FOLDER_PATH)
+    .description('Set remote configuration (Azure variable group) for a given configuration')
+    .argument('<sub_schema>', 'Sub-schema to use')
+    .option('-p --pat <personal_access_token>', 'Azure DevOps personal access token')
+    .option('-o --org <organisation>', 'Azure DevOps organisation')
+    .action(async (subSchema, options) => {
 
-        if (!schema?.properties?.[packageName]) {
-            console.error(`No configuration schema found for package: ${packageName}`)
-            process.exit(1)
-        }
+        const configFolderPath = path.join(__dirname, '../config')
 
-        const vars = getEnvVars(schema['properties'][packageName])
+        const cliConfig = await figure<FigureCLIConfig["azureDevops"]>({
+            configFolderPath: configFolderPath,
+            subSchema: 'azureDevops',
+            debug: true,
+            prompt: true
+        });
+
+        const cliConfigInstance = cliConfig.config;
+
+        const appConfig = await figure({
+            configFolderPath: CONFIG_FOLDER_PATH,
+            subSchema: subSchema
+        })
+
+        const vars = appConfig.env.getConfigNodesForEnv()
 
         //Iterate each of them and ask for a value
         const variables: any = {}
 
         //Upload the list to azure variable group
         for (const envVar of vars) {
+
             const response = await prompts({
                 type: 'text',
                 name: 'value',
-                message: envVar.name
+                message: envVar.envVarName,
+                initial: envVar.configValue
             });
 
-            variables[envVar.name] = {
+            variables[envVar.envVarName] = {
                 value: response.value,
                 isReadOnly: false,
                 isSecret: envVar.isSecret
             }
         }
 
-        await createVariableGroup(variables, packageName)
+        if (cliConfigInstance) {
+            await createVariableGroup(variables, subSchema, cliConfigInstance.pat, options.org, cliConfigInstance.project)
+        }
+
     })
 
 
 program.command('generate')
-    .command('types')
     .description('Generate Typescript declaration file for config')
-    .action(() => {
-        const schema = getSchema(CONFIG_FOLDER_PATH)
+    .option('-o --output <output_path>', 'Generated file output path')
+    .option('-p --config-path <config_path>', 'Config directory path')
+    .action((options) => {
+        const configFolderPath = options.configPath ?? CONFIG_FOLDER_PATH
+
+        const schema = getSchema(getPath(configFolderPath, 'schema'))
+        const defaultOutputPath = path.join(__dirname, '../src/config.ts')
+
+        const outputPath = options.output ?? defaultOutputPath
 
         compile(schema as any, 'Configuration', {
             additionalProperties: false
         }).then(ts => {
-            fs.writeFileSync(path.join(__dirname, '../src/config.ts'), ts)
+            fs.writeFileSync(outputPath, ts)
         })
     })
 

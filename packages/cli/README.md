@@ -1,15 +1,11 @@
-# config
+# Figure CLI
 
-To install dependencies:
+Command-line interface for Figure.
 
-```bash
-bun install
-```
+## Installation
 
-To run:
+`npm install -g figure-cli`
 
-```bash
-bun run main.ts
-```
+## Usage
 
-This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+`figure --help`

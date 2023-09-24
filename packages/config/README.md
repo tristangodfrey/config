@@ -1,15 +1,15 @@
-# config
+# Config
 
-To install dependencies:
+## Usage
 
-```bash
-bun install
+```typescript
+import { parseConfig } from 'figure'
+
+const config = parseConfig('common/config') //Initialize with config folder path
+
 ```
 
-To run:
+## Logging
 
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.0.2. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+Nothing is logged by default. You may optionally enable debug logging to gain some more insight
+into what the library is doing.
