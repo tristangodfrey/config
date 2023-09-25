@@ -46,14 +46,16 @@ required:
 
 ### Additional metadata
 
-`env: "ENVIRONMENT_VARIABLE_NAME"` - Links a configuration property to an environment variable
-`isSecret: true` - Specifies a configuration property as secret, for generating kubernetes resources + creating azure variable groups
+`env: "ENVIRONMENT_VARIABLE_NAME"` - Links a configuration property to an environment variable  
+
+`isSecret: true` - Specifies a configuration property as secret, for generating kubernetes resources + creating azure variable groups  
+
 
 ### Create configuration
 
 Figure will load configuration files in the following order:
 - default.yaml
-- <env>.yaml (where <env> is the value of `process.env.NODE_ENV`, unless overridden)
+- {env}.yaml (where {env} is the value of `process.env.NODE_ENV`, unless overridden)
 
 After the files have been loaded, values are substituted with corresponding environment variables (if present).
 
