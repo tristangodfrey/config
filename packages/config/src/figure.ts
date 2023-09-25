@@ -124,7 +124,8 @@ export const init = async <T>(options: Options): Promise<FigureInstance<T>> => {
         const cn = getConfigNodesForEnv(processed.schema, processed.config);
 
         if (!result.valid) {
-            result.errors.map(e => formatError(e, cn))
+            result.errors.map(e => formatError(e, cn)).forEach(e => console.error(e));
+            process.exit(1);
         }
     }
 
