@@ -20,8 +20,8 @@ importers:
         specifier: ^11.0.0
         version: 11.0.0
       figure-config:
-        specifier: workspace:*
-        version: link:../config
+        specifier: ^0.0.3
+        version: 0.0.3(typescript@5.2.2)
       json-schema-to-typescript:
         specifier: ^13.1.1
         version: 13.1.1
@@ -1717,6 +1717,26 @@ packages:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
     dependencies:
       pend: 1.2.0
+    dev: false
+
+  /figure-config@0.0.3(typescript@5.2.2):
+    resolution: {integrity: sha512-FqYDegsYd/XfcgGAc+1IJRQ5fFeTkhJvdv+H8chzjPwWjn4OCCH5VVFJoirocEaUeF8QVVoLrECcY1tvNs8XQA==}
+    peerDependencies:
+      typescript: ^5.0.0
+    dependencies:
+      dot-prop: 6.0.1
+      js-yaml: 4.1.0
+      json-refs: 3.0.15
+      json-schema-library: 9.1.2
+      json-schema-to-typescript: 13.1.1
+      jsonpath: 1.1.1
+      jsonschema: 1.4.1
+      node-jq: 4.0.1
+      pino: 8.15.1
+      prompts: 2.4.2
+      typescript: 5.2.2
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /figures@3.2.0:

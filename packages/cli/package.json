@@ -9,7 +9,7 @@
     "@openapitools/openapi-generator-cli": "^2.7.0",
     "axios": "^1.5.0",
     "commander": "^11.0.0",
-    "figure-config": "workspace:*",
+    "figure-config": "^0.0.3",
     "json-schema-to-typescript": "^13.1.1",
     "kubernetes-models": "^4.3.1",
     "prompts": "^2.4.2"
