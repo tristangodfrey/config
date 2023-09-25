@@ -1,8 +1,9 @@
 {
   "name": "figure-config",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "module": "index.ts",
-  "main": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/js-yaml": "^4.0.6",
