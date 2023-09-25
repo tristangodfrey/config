@@ -3,9 +3,10 @@
 YAML-based configuration library for NodeJS/TypeScript.
 Uses JSON schema to validate configurations and provide additional metadata.
 
-## Implementations
+## Table of Contents
 
-- TypeScript
+[Getting Started](#getting-started)
+[Error Handling](#error-handling)
 
 ## Installation
 
@@ -98,4 +99,12 @@ console.log(config.azureDevops.organisation) //"some_org"
 console.log(config.azureDevops.project) //"env_project"
 
 ```
+
+## Error Handling
+
+By default, if a validation error is encountered, figure will print the errors to STDOUT and `process.exit(1)`.
+
+If `logErrors` is set to false, an instance of `Figure` will be returned. Validation errors can be found in `instance.validatorResult`.
+
+If the `prompt` option is set, it will interactively prompt for missing values before validating.
 
