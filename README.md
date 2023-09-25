@@ -5,8 +5,8 @@ Uses JSON schema to validate configurations and provide additional metadata.
 
 ## Table of Contents
 
-[Getting Started](#getting-started)
-[Error Handling](#error-handling)
+[Getting Started](#getting-started)  
+[Error Handling](#error-handling)  
 
 ## Installation
 
