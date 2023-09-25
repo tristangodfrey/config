@@ -1,4 +1,4 @@
-import {Schema, validate, ValidatorResult} from "jsonschema";
+import {Schema, validate, ValidatorResult, ValidationError as SchemaValidationError} from "jsonschema";
 import {getPath, getSchema, loadConfig} from "./fs";
 import JsonRefs from "json-refs";
 import {FigureEnv, getConfigNodesForEnv, substituteEnvVars} from "./env";
@@ -6,6 +6,9 @@ import {formatError} from "./validation";
 import {Path} from "./config-node";
 import {set} from "dot-prop";
 import prompts from 'prompts';
+import {Options} from "./options";
+import {Config} from "./config";
+import {ReturnType, MappedConfig} from "./options";
 
 export const processSchema = async (schema: Schema, subSchema?: string) => {
     const resolved = (await JsonRefs.resolveRefs(schema)).resolved as Schema;
@@ -14,42 +17,11 @@ export const processSchema = async (schema: Schema, subSchema?: string) => {
     return (subSchema ? resolved?.properties?.[subSchema] : resolved) as Schema
 }
 
-export class Options {
-    /**
-     * Path to the configuration directory (required)
-     */
-    configFolderPath: string;
-    /**
-     * Optional path to the JSON schema (if it is not in `configFolderPath`)
-     */
-    schemaPath?: string;
-    /**
-     * Subschema to load (when using multiple configs in the same schema)
-     */
-    subSchema?: string;
-    /**
-     * Pass a schema directly. `schemaPath` will be ignored.
-     */
-    schema?: Schema;
-    /**
-     * Enables debug logging
-     */
-    debug?: boolean = false;
-    /**
-     * Set the environment-specific config name, setting it to "production" will lead to production.yaml being loaded,
-     * defaults to the value of the NODE_ENV environment variable
-     */
-    env?: string;
+class ValidationError extends Error {
 
-    /**
-     * If set, validation errors will be logged to the console (default = true)
-     */
-    logErrors?: boolean = true;
-
-    /**
-     * If set, figure will prompt for missing config values
-     */
-    prompt?: boolean = false;
+    constructor(private readonly errors: SchemaValidationError[]) {
+        super('Config validation error');
+    }
 }
 
 export class FigureData<T> {
@@ -63,7 +35,7 @@ type ConfigParseResult<T> = {
     config?: T
 }
 
-export const init = async <T>(options: Options): Promise<FigureInstance<T>> => {
+export const init = async <O extends Options>(options: O): Promise<ReturnType<O>> => {
 
     const processed = new FigureData();
 
@@ -127,10 +99,16 @@ export const init = async <T>(options: Options): Promise<FigureInstance<T>> => {
             result.errors.map(e => formatError(e, cn)).forEach(e => console.error(e));
             process.exit(1);
         }
+    } else {
+        throw new ValidationError(result.errors)
     }
 
+    if (options.returnInstance) {
+        return new FigureInstance<MappedConfig<O>>(processed.schema, processed.config as Config, options, result);
+    }
 
-    return new FigureInstance<T>(processed.schema, processed.config as T, options, result);
+    return new FigureInstance<MappedConfig<O>>(processed.schema, processed.config as Config, options, result).config as ReturnType<O>;
+
 }
 
 export class FigureInstance<T> {

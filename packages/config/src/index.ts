@@ -1,8 +1,10 @@
 import {default as pino, Logger} from "pino"
-import {FigureInstance, init, Options} from "./figure";
+import {init} from "./figure";
+import {Options, ReturnType} from "./options";
 
 export * from "./figure";
 export * from './fs';
+export * from './options';
 
 declare global {
     var logger: Logger
@@ -10,11 +12,11 @@ declare global {
 
 export * from './env'
 export * from './config-node';
-export const figure = async <T>(options: Options): Promise<FigureInstance<T>> => {
+export const figure = async <O extends Options = Options>(options: O): Promise<ReturnType<O>> => {
 
     global.logger = pino({level: options.debug ? 'debug' : 'error'})
 
-    return await init<T>(options)
+    return await init<O>(options) as ReturnType<O>
 }
 
 

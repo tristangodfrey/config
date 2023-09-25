@@ -1,14 +1,12 @@
 #!/usr/bin/env bun
 import * as path from "path";
-import {compile} from 'json-schema-to-typescript'
-import * as fs from "fs";
-import {figure, getPath, getSchema, Options} from "figure-config";
+import {figure, getSchema} from "figure-config";
 import prompts from 'prompts';
 import {Command, Option} from 'commander';
 import {createVariableGroup} from "./utils/azure-devops.ts";
 import * as packageJson from "./../package.json"
 import {generateConfigMap, generateSecret} from "./utils/kubernetes.ts";
-import {FigureCLIConfig} from "./config.ts";
+import {generate} from "./utils/generate.ts";
 
 const program = new Command();
 
@@ -84,7 +82,8 @@ program.command('validate')
         const config = await figure({
             configFolderPath: CONFIG_FOLDER_PATH,
             env: options.environment,
-            subSchema: appName
+            subSchema: appName,
+            returnInstance: true
         })
 
         console.log('Validating configuration...')
@@ -92,7 +91,6 @@ program.command('validate')
         console.log(`Default: ${config.options.configFolderPath}`);
         console.log(`Environment (${options.env}): ${config.options.env}`);
         console.log(`Schema: ${config.options.schemaPath}`)
-
 
         const res = config.config;
 
@@ -110,11 +108,12 @@ program.command('upload')
 
         const configFolderPath = path.join(__dirname, '../config')
 
-        const cliConfig = await figure<FigureCLIConfig["azureDevops"]>({
+        const cliConfig = await figure({
             configFolderPath: configFolderPath,
             subSchema: 'azureDevops',
             debug: true,
-            prompt: true
+            prompt: true,
+            returnInstance: true
         });
 
         const cliConfigInstance = cliConfig.config;
@@ -157,19 +156,10 @@ program.command('generate')
     .description('Generate Typescript declaration file for config')
     .option('-o --output <output_path>', 'Generated file output path')
     .option('-p --config-path <config_path>', 'Config directory path')
-    .action((options) => {
+    .action(async (options) => {
         const configFolderPath = options.configPath ?? CONFIG_FOLDER_PATH
 
-        const schema = getSchema(getPath(configFolderPath, 'schema'))
-        const defaultOutputPath = path.join(__dirname, '../src/config.ts')
-
-        const outputPath = options.output ?? defaultOutputPath
-
-        compile(schema as any, 'Configuration', {
-            additionalProperties: false
-        }).then(ts => {
-            fs.writeFileSync(outputPath, ts)
-        })
+        generate(configFolderPath)
     })
 
 
