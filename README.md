@@ -10,9 +10,8 @@ Uses JSON schema to validate configurations and provide additional metadata.
 
 ## Installation
 
-`npm install -g figure-config`
-
-`npm install figure --save`
+`npm install figure-config --save`  
+`npm install -g figure-cli`  
 
 ## Getting started
 
