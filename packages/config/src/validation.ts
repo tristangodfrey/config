@@ -8,7 +8,7 @@ export const formatError = (error: ValidationError, configNodes: ConfigNode[]) =
 
     if (error.name === 'required') {
         if (error.path.length !== 0) {
-            return `Missing value for: ${error.path.join('.')}.${error.argument} [env: ${cn.envVarName}]`;
+            return `Missing value for: ${error.path.join('.')}.${error.argument} [env: ${cn?.envVarName}]`;
         }
         return `Missing value for: ${error.argument}`;
     }

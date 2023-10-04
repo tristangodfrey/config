@@ -1,21 +1,29 @@
 {
   "name": "figure-cli",
   "module": "main.ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "npm run build"
+  },
   "bin": {
-    "figure": "./src/main.ts"
+    "figure": "./dist/main.js"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",
     "axios": "^1.5.0",
     "commander": "^11.0.0",
-    "figure-config": "^0.0.3",
+    "figure-config": "workspace:*",
     "json-schema-to-typescript": "^13.1.1",
     "kubernetes-models": "^4.3.1",
     "prompts": "^2.4.2"
   },
+  "figure": {
+    "configFolderPath": "./config"
+  },
   "devDependencies": {
     "@types/prompts": "^2.4.4",
+    "@types/node": "^20.8.2",
     "bun-types": "^1.0.2"
   },
   "peerDependencies": {

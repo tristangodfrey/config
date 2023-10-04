@@ -40,8 +40,6 @@ export const getConfigNodesForEnv = (schema: Schema, config: any): ConfigNode[] 
     // Iterate all schema end-nodes
     const nodes = jp.nodes(schema, '$..env').map(n => ({ path: new Path(n.path), value: n.value }))
 
-    console.log(config);
-
     return nodes.map(n => {
         const cn: ConfigNode = {
             configPath: n.path.toConfigPath(),

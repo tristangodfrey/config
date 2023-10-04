@@ -1,6 +1,6 @@
 {
   "name": "figure-config",
-  "version": "0.0.5",
+  "version": "0.0.9",
   "module": "index.ts",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,7 +14,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "bun test"
+    "test": "bun test",
+    "prepublish": "pnpm run build"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

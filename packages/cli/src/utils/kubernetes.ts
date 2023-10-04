@@ -24,7 +24,7 @@ export const generateSecret = <T>(instance: FigureInstance<T>, mode: string) => 
 
         kvPairs = subValue(values.filter(v => v.isSecret));
     }
-    const secret = new Secret({ data: kvPairs, metadata: { name: instance.options.subSchema } })
+    const secret = new Secret({ data: kvPairs, metadata: { name: instance.options.subSchema as string } })
 
     return secret;
 }

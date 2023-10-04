@@ -1,14 +1,17 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 import * as path from "path";
 import {figure, getSchema} from "figure-config";
 import prompts from 'prompts';
 import {Command, Option} from 'commander';
-import {createVariableGroup} from "./utils/azure-devops.ts";
-import * as packageJson from "./../package.json"
-import {generateConfigMap, generateSecret} from "./utils/kubernetes.ts";
-import {generate} from "./utils/generate.ts";
+import {createVariableGroup} from "./utils/azure-devops";
+import {generateConfigMap, generateSecret} from "./utils/kubernetes";
+import {generate} from "./utils/generate";
+import * as fs from "node:fs";
 
 const program = new Command();
+
+const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf8'));
+
 
 const CONFIG_FOLDER_PATH = process.env.CONFIG_FOLDER_PATH;
 
@@ -112,15 +115,15 @@ program.command('upload')
             configFolderPath: configFolderPath,
             subSchema: 'azureDevops',
             debug: true,
-            prompt: true,
-            returnInstance: true
+            prompt: true
         });
 
-        const cliConfigInstance = cliConfig.config;
+        console.log(cliConfig);
 
         const appConfig = await figure({
             configFolderPath: CONFIG_FOLDER_PATH,
-            subSchema: subSchema
+            subSchema: subSchema,
+            returnInstance: true
         })
 
         const vars = appConfig.env.getConfigNodesForEnv()
@@ -145,10 +148,7 @@ program.command('upload')
             }
         }
 
-        if (cliConfigInstance) {
-            await createVariableGroup(variables, subSchema, cliConfigInstance.pat, options.org, cliConfigInstance.project)
-        }
-
+        await createVariableGroup(variables, subSchema, cliConfig.pat, options.org, cliConfig.project)
     })
 
 

@@ -50,6 +50,7 @@ export const createVariableGroup = async (
                     // console.error(res)
                 }
             } catch (e) {
+                //@ts-ignore
                 console.error(e.response.data)
             }
 

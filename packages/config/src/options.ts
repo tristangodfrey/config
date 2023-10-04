@@ -5,12 +5,12 @@ import {Config} from "./config";
 export type ReturnType<O extends Options> =
     O["returnInstance"] extends true ? FigureInstance<MappedConfig<O>> : MappedConfig<O>
 
-export type MappedConfig<O extends Options> = O["subSchema"] extends string ? Config[O["subSchema"]] : Config
+export type MappedConfig<O extends Options> = O["subSchema"] extends keyof Config ? Config[O["subSchema"]] : Config
 export class Options {
     /**
-     * Path to the configuration directory (required)
+     * Path to the configuration directory
      */
-    configFolderPath: string;
+    configFolderPath?: string;
     /**
      * Optional path to the JSON schema (if it is not in `configFolderPath`)
      */
@@ -18,7 +18,7 @@ export class Options {
     /**
      * Subschema to load (when using multiple configs in the same schema)
      */
-    subSchema?: string;
+    subSchema?: keyof Config;
     /**
      * Pass a schema directly. `schemaPath` will be ignored.
      */

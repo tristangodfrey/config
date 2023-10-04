@@ -1,14 +1,11 @@
-import path from "path";
+import * as path from "path";
 import {compile} from "json-schema-to-typescript";
 import fs from "fs";
 import {getPath, getSchema} from "figure-config";
 
-export const generate = (configFolderPath: string) => {
-    const p = path.join(process.cwd(), 'node_modules/figure-config/dist/config.d.ts')
+const gen = (p: string, schema: any) => {
 
-    const schema = getSchema(getPath(configFolderPath, 'schema'))
-
-    compile(schema as any, 'Config', {
+    compile(schema, 'Config', {
         additionalProperties: false,
 
     }).then(ts => {
@@ -21,4 +18,16 @@ export const generate = (configFolderPath: string) => {
 
         fs.writeFileSync(p, res)
     })
+}
+
+export const generate = (configFolderPath: string) => {
+    const p = path.join(process.cwd(), 'node_modules/figure-config/dist/config.d.ts')
+
+    const schema = getSchema(getPath(configFolderPath, 'schema'))
+
+    gen(p, schema)
+
+    if (process.env.FIGURE_DEV_MODE) {
+        gen(path.join(process.cwd(), 'node_modules/figure-config/src/config.ts'), schema)
+    }
 }
