@@ -10,7 +10,6 @@
     "downlevelIteration": true,
     "skipLibCheck": true,
     "jsx": "react-jsx",
-    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "allowJs": true,
