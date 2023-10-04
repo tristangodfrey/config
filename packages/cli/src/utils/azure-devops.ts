@@ -1,4 +1,4 @@
-import prompts from "prompts";
+import * as prompts from "prompts";
 import axios, {Axios, AxiosError} from "axios";
 import { VariableGroupsAPI } from "../devops-api";
 import {VariableGroupParameters} from "../devops-api/generated";

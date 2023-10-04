@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import * as path from "path";
 import {figure, getSchema} from "figure-config";
-import prompts from 'prompts';
+import * as prompts from 'prompts';
 import {Command, Option} from 'commander';
 import {createVariableGroup} from "./utils/azure-devops";
 import {generateConfigMap, generateSecret} from "./utils/kubernetes";
@@ -11,14 +11,6 @@ import * as fs from "node:fs";
 const program = new Command();
 
 const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf8'));
-
-
-const CONFIG_FOLDER_PATH = process.env.CONFIG_FOLDER_PATH;
-
-if (!CONFIG_FOLDER_PATH) {
-    console.error('CONFIG_FOLDER_PATH environment variable not defined')
-    process.exit(1)
-}
 
 program.version(packageJson.version).name('figure')
 
@@ -37,7 +29,6 @@ kubernetes.command('secret')
     .addOption(OPTION_VS)
     .action(async (appName, options) => {
         const instance = await figure({
-            configFolderPath: CONFIG_FOLDER_PATH,
             env: options.environment,
             subSchema: appName
         })
@@ -57,12 +48,11 @@ kubernetes.command('configmap')
     .action(async (appName, options) => {
 
         const instance = await figure({
-            configFolderPath: CONFIG_FOLDER_PATH,
             env: options.environment,
             subSchema: appName
         })
 
-        const schema = getSchema(CONFIG_FOLDER_PATH)
+        const schema = getSchema(instance.options.configFolderPath)
 
         const cm = generateConfigMap(instance, options.valueSubstitution)
 
@@ -83,7 +73,6 @@ program.command('validate')
     .addOption(OPTION_ENV)
     .action(async (appName, options) => {
         const config = await figure({
-            configFolderPath: CONFIG_FOLDER_PATH,
             env: options.environment,
             subSchema: appName,
             returnInstance: true
@@ -121,7 +110,6 @@ program.command('upload')
         console.log(cliConfig);
 
         const appConfig = await figure({
-            configFolderPath: CONFIG_FOLDER_PATH,
             subSchema: subSchema,
             returnInstance: true
         })
@@ -157,7 +145,7 @@ program.command('generate')
     .option('-o --output <output_path>', 'Generated file output path')
     .option('-p --config-path <config_path>', 'Config directory path')
     .action(async (options) => {
-        const configFolderPath = options.configPath ?? CONFIG_FOLDER_PATH
+        const configFolderPath = options.configPath
 
         generate(configFolderPath)
     })

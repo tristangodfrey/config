@@ -1,6 +1,6 @@
 import * as path from "path";
 import {compile} from "json-schema-to-typescript";
-import fs from "fs";
+import * as fs from "fs";
 import {getPath, getSchema} from "figure-config";
 
 const gen = (p: string, schema: any) => {
