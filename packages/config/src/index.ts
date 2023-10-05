@@ -5,6 +5,7 @@ export * from "./figure";
 export * from './fs';
 export * from './options';
 export * from './config';
+
 import {init} from './init';
 
 declare global {
