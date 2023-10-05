@@ -3,6 +3,10 @@
 YAML-based configuration library for NodeJS/TypeScript.
 Uses JSON schema to validate configurations and provide additional metadata.
 
+## WARNING!
+
+Library is still under active development, API may not be stable.
+
 ## Table of Contents
 
 [Getting Started](#getting-started)  

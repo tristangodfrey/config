@@ -1,5 +1,5 @@
 import {MappedConfig, Options, ReturnType} from "./options";
-import {getPath, getSchema, loadConfig} from "./fs";
+import {findDefaultConfigPath, getPath, getSchema, loadConfig} from "./fs";
 import {getConfigNodesForEnv, substituteEnvVars} from "./env";
 import {validate} from "jsonschema";
 import {Path} from "./config-node";
@@ -8,37 +8,6 @@ import {set} from "dot-prop";
 import {formatError} from "./validation";
 import {FigureData, FigureInstance, processSchema} from "./figure";
 import {ValidationError} from "./errors";
-import path from "path";
-import fs from "fs";
-
-const findDefaultConfigPath = () => {
-    let currentDir = process.cwd(); // Start from the current directory or a specified directory
-
-    while (currentDir) {
-        const packagePath = path.join(currentDir, 'package.json'); // Construct the path to .figrc in the current directory
-
-        console.log(`Searching for: ${packagePath}`);
-
-        if (fs.existsSync(packagePath)) {
-            const packageJson = JSON.parse(fs.readFileSync(packagePath).toString('utf-8'))
-
-            if (packageJson['figure']) {
-                if (packageJson['figure']['configFolderPath']) {
-                    return path.join(currentDir, packageJson['figure']['configFolderPath']);
-                }
-            }
-        }
-
-        // Move up to the parent directory, or null if already at the root
-        const parentDir = path.dirname(currentDir);
-        if (parentDir === currentDir) break; // Stop if we are at the root (i.e., the parent is the same as the current directory)
-        currentDir = parentDir;
-    }
-
-    return null; // Return null if .figrc is not found in any parent directory
-
-
-}
 
 export const init = async <O extends Options>(options?: O): Promise<ReturnType<O>> => {
 

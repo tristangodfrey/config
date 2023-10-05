@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as path from "path";
-import {figure, getSchema} from "figure-config";
+import {figure, findDefaultConfigPath, getSchema} from "figure-config";
 import * as prompts from 'prompts';
 import {Command, Option} from 'commander';
 import {createVariableGroup} from "./utils/azure-devops";
@@ -145,9 +145,14 @@ program.command('generate')
     .option('-o --output <output_path>', 'Generated file output path')
     .option('-p --config-path <config_path>', 'Config directory path')
     .action(async (options) => {
-        const configFolderPath = options.configPath
+        const configFolderPath = options.configPath ?? findDefaultConfigPath()
 
-        generate(configFolderPath)
+        try {
+            generate(configFolderPath)
+            console.log("Configuration types generated")
+        } catch(e) {
+            console.error(e);
+        }
     })
 
 
