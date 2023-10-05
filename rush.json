@@ -334,11 +334,13 @@
   "projects": [
     {
       "packageName": "figure-cli",
-      "projectFolder": "packages/cli"
+      "projectFolder": "packages/cli",
+      "shouldPublish": true
     },
     {
       "packageName": "figure-config",
-      "projectFolder": "packages/config"
+      "projectFolder": "packages/config",
+      "shouldPublish": true
     }
     // {
     //   /**

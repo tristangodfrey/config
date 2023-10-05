@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-config",
+      "comment": "Export config types",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-config"
+}
