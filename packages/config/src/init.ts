@@ -1,4 +1,4 @@
-import {MappedConfig, Options, ReturnType} from "./options";
+import {Logger, MappedConfig, Options, ReturnType} from "./options";
 import {findDefaultConfigPath, getPath, getSchema, loadConfig} from "./fs";
 import {getConfigNodesForEnv, substituteEnvVars} from "./env";
 import {validate} from "jsonschema";
@@ -9,7 +9,7 @@ import {formatError} from "./validation";
 import {FigureData, FigureInstance, processSchema} from "./figure";
 import {ValidationError} from "./errors";
 
-export const init = async <O extends Options>(options?: O): Promise<ReturnType<O>> => {
+export const init = async <O extends Options>(options: O, logger: Logger): Promise<ReturnType<O>> => {
 
     options = { ...new Options(), ...options }
 
