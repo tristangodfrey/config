@@ -9,7 +9,7 @@ import {formatError} from "./validation";
 import {FigureData, FigureInstance, processSchema} from "./figure";
 import {ValidationError} from "./errors";
 
-export const init = async <O extends Options>(options: O, logger: Logger): Promise<ReturnType<O>> => {
+export const init = async <O extends Options>(options: O): Promise<ReturnType<O>> => {
 
     options = { ...new Options(), ...options }
 

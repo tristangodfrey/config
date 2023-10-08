@@ -9,7 +9,6 @@ export type MappedConfig<O extends Options> = O["subSchema"] extends keyof Confi
 
 export type Logger = {
     error(message?: any, ...optionalParams: any[]): void;
-    log(message?: any, ...optionalParams: any[]): void;
     debug(message?: any, ...optionalParams: any[]): void;
 }
 
