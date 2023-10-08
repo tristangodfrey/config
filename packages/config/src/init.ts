@@ -53,7 +53,7 @@ export const init = async <O extends Options>(options?: O): Promise<ReturnType<O
 
     const envConfig = loadConfig(getPath(options.configFolderPath, env))
 
-    processed.schema = await processSchema(processed.schema, options.subSchema)
+    processed.schema = await processSchema(processed.schema, options.subSchema as string)
 
     processed.config = options.subSchema ?
         substituteEnvVars(processed.schema, { ...defaultConfig, ...envConfig })[options.subSchema] as MappedConfig<O>
@@ -86,13 +86,10 @@ export const init = async <O extends Options>(options?: O): Promise<ReturnType<O
     }
 
     if (options.logErrors) {
-
-        console.log(`Logging errors!`)
-
         const cn = getConfigNodesForEnv(processed.schema, processed.config);
 
         if (!result.valid) {
-            result.errors.map(e => formatError(e, cn)).forEach(e => console.error(e));
+            result.errors.map(e => formatError(e, cn)).forEach(e => logger.error(e));
             process.exit(1);
         }
     } else {

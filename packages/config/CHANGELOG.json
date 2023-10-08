@@ -1,0 +1,17 @@
+{
+  "name": "figure-config",
+  "entries": [
+    {
+      "version": "0.0.11",
+      "tag": "figure-config_v0.0.11",
+      "date": "Thu, 05 Oct 2023 14:47:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Export config types"
+          }
+        ]
+      }
+    }
+  ]
+}

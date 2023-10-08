@@ -341,6 +341,11 @@
       "packageName": "figure-config",
       "projectFolder": "packages/config",
       "shouldPublish": true
+    },
+    {
+      "packageName": "figure-nest",
+      "projectFolder": "packages/nest-module",
+      "shouldPublish": true
     }
     // {
     //   /**
