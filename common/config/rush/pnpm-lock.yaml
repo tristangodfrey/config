@@ -13,6 +13,7 @@ importers:
       axios: ^1.5.0
       bun-types: ^1.0.2
       commander: ^11.0.0
+      figure-config: workspace:*
       json-schema-to-typescript: ^13.1.1
       kubernetes-models: ^4.3.1
       prompts: ^2.4.2
@@ -29,6 +30,7 @@ importers:
       '@types/node': 20.8.2
       '@types/prompts': 2.4.5
       bun-types: 1.0.4
+      figure-config: link:../config
 
   ../../packages/config:
     specifiers:

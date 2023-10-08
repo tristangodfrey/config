@@ -2,6 +2,18 @@
   "name": "figure-cli",
   "entries": [
     {
+      "version": "0.0.9",
+      "tag": "figure-cli_v0.0.9",
+      "date": "Sun, 08 Oct 2023 11:08:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Set figure-config as peer + dev dependency"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.8",
       "tag": "figure-cli_v0.0.8",
       "date": "Thu, 05 Oct 2023 14:47:51 GMT",

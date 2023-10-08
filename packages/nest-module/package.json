@@ -1,32 +1,32 @@
 {
-  "name": "figure-nest",
-  "version": "0.0.1",
-  "module": "index.ts",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "devDependencies": {
-	"@jest/globals": "^29.7.0",
-	"@types/node": "^20.6.3",
-	"typescript": "^5.2.2",
-	"@nestjs/testing": "^10.2.7",
-	"bun-types": "^1.0.2",
-	"figure-cli": "workspace:*",
-	"figure-config": "workspace:*",
-	"rxjs": "^7.8.1"
-  },
-  "scripts": {
-	"build": "tsc",
-	"test": "bun test",
-	"prepublish": "pnpm run build"
-  },
-  "figure": {
-	"configFolderPath": "./config"
-  },
-  "peerDependencies": {
-	"typescript": "^5.0.0",
-	"figure-config": "workspace:*"
-  },
-  "dependencies": {
-	"@nestjs/common": "^10.2.7"
-  }
+	"name": "figure-nest",
+	"version": "0.0.2",
+	"module": "index.ts",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"devDependencies": {
+		"@jest/globals": "^29.7.0",
+		"@nestjs/testing": "^10.2.7",
+		"@types/node": "^20.6.3",
+		"bun-types": "^1.0.2",
+		"figure-cli": "workspace:*",
+		"figure-config": "workspace:*",
+		"rxjs": "^7.8.1",
+		"typescript": "^5.2.2"
+	},
+	"scripts": {
+		"build": "tsc",
+		"test": "bun test",
+		"prepublish": "pnpm run build"
+	},
+	"figure": {
+		"configFolderPath": "./config"
+	},
+	"peerDependencies": {
+		"figure-config": "workspace:*",
+		"typescript": "^5.0.0"
+	},
+	"dependencies": {
+		"@nestjs/common": "^10.2.7"
+	}
 }

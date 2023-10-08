@@ -1,7 +1,7 @@
 {
   "name": "figure-cli",
   "module": "main.ts",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "build": "tsc",
     "build:watch": "tsc -w",
