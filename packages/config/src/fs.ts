@@ -18,7 +18,7 @@ export const findDefaultConfigPath = () => {
     while (currentDir) {
         const packagePath = path.join(currentDir, 'package.json'); // Construct the path to package.json in the current directory
 
-        console.log(`Searching for: ${packagePath}`);
+        logger.log(`Searching for: ${packagePath}`);
 
         if (fs.existsSync(packagePath)) {
             const packageJson = JSON.parse(fs.readFileSync(packagePath).toString('utf-8'))

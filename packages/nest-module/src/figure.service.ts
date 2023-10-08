@@ -1,5 +1,5 @@
-import {Inject, Injectable, Logger, OnModuleInit} from "@nestjs/common";
-import {Options as FigureOptions, Config, figure} from "figure-config"
+import {Inject, Injectable, Logger} from "@nestjs/common";
+import {Config, figure, Options as FigureOptions} from "figure-config"
 
 @Injectable()
 export class FigureService {
@@ -11,7 +11,10 @@ export class FigureService {
 
     async init() {
         if (! this.config) {
-            this.config = await figure(this.options)
+            this.config = await figure({
+                ...this.options,
+                logger: this.logger
+            });
         }
     }
 
