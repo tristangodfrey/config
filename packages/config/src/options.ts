@@ -1,12 +1,17 @@
 import {Schema} from "jsonschema";
 import {FigureInstance} from "./figure";
 import {Config} from "./config";
+import { Logger } from "ts-log";
 
 export type ReturnType<O extends Options> =
     O["returnInstance"] extends true ? FigureInstance<MappedConfig<O>> : MappedConfig<O>
 
 export type MappedConfig<O extends Options> = O["subSchema"] extends keyof Config ? Config[O["subSchema"]] : Config
+
 export class Options {
+
+    logger?: Logger;
+
     /**
      * Path to the configuration directory
      */
