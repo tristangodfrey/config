@@ -17,8 +17,7 @@
 	"scripts": {
 		"build": "tsc",
 		"build:watch": "tsc -w",
-		"test": "bun test",
-		"prepublish": "pnpm run build"
+		"test": "bun test"
 	},
 	"figure": {
 		"configFolderPath": "./config"
