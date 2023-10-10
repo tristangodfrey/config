@@ -1,10 +1,10 @@
 import { test, expect } from "@jest/globals";
-import {envVarPaths, substituteEnvVars, figure, config} from "../src/index";
+import {envVarPaths, substituteEnvVars, figure} from "../src/index";
 import {Draft07} from "json-schema-library"
 
 
 
-test("full config from only env vars", () => {
+test("full config from only env vars", async () => {
 
     process.env.APP_NAME = "cool-app"
     process.env.APP_DESCRIPTION = "cool-app-description"
@@ -31,8 +31,11 @@ test("full config from only env vars", () => {
         appDescription: "cool-app-description"
     }
 
-    const res = config(schema, {})
+    const res = await figure({
+        schema: schema,
+        configFolderPath: '.'
+    })
 
-    expect(res.config).toMatchObject(expected)
+    expect(res).toMatchObject(expected)
 })
 

@@ -2,13 +2,14 @@ import fs from "fs";
 import * as yaml from "js-yaml";
 import {Schema} from "jsonschema";
 import path from "path";
+import { Maybe, Just, Nothing } from 'purify-ts/Maybe'
 
-export const loadConfig = (path: string) => {
+export const loadConfig = (path: string): object => {
     try {
         const data = fs.readFileSync(path, 'utf8')
         return yaml.load(data) as object
     } catch (e) {
-        throw Error(`Could not find configuration file: ${path}`)
+        return {};
     }
 }
 
