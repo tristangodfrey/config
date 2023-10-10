@@ -2,6 +2,12 @@
   "name": "figure-config",
   "entries": [
     {
+      "version": "0.0.15",
+      "tag": "figure-config_v0.0.15",
+      "date": "Tue, 10 Oct 2023 17:11:32 GMT",
+      "comments": {}
+    },
+    {
       "version": "0.0.13",
       "tag": "figure-config_v0.0.13",
       "date": "Tue, 10 Oct 2023 09:14:10 GMT",
