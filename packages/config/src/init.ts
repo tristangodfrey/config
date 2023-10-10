@@ -19,9 +19,7 @@ export const init = async <O extends Options>(options: O, logger: Logger): Promi
     const processed = new FigureData<O>();
 
     if (! options.configFolderPath) {
-
-        //Attempt to get it from config
-        const path = findDefaultConfigPath();
+        const path = process.env.FIGURE_PATH ?? findDefaultConfigPath();
 
         if (! path) {
             throw new TypeError(`Missing option: configFolderPath`);

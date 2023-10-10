@@ -2,6 +2,18 @@
   "name": "figure-config",
   "entries": [
     {
+      "version": "0.0.13",
+      "tag": "figure-config_v0.0.13",
+      "date": "Tue, 10 Oct 2023 09:14:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove logging from util modules"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.12",
       "tag": "figure-config_v0.0.12",
       "date": "Sun, 08 Oct 2023 12:21:06 GMT",

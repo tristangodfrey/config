@@ -1,6 +1,6 @@
 {
 	"name": "figure-nest",
-	"version": "0.0.4",
+	"version": "0.0.6",
 	"module": "index.ts",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -16,7 +16,7 @@
 	},
 	"scripts": {
 		"build": "tsc",
-	  	"build:watch": "tsc -w",
+		"build:watch": "tsc -w",
 		"test": "bun test",
 		"prepublish": "pnpm run build"
 	},
