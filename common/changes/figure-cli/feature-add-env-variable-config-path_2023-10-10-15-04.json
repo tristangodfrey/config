@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-cli",
+      "comment": "Fix build issue",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-cli"
+}
