@@ -29,6 +29,6 @@ jobs:
         run: node common/scripts/install-run-rush.js rebuild --verbose
 
       - name: Publish to NPM
-        run: rush publish --apply --publish --target-branch main
+        run: node common/scripts/install-run-rush.js publish --apply --publish --target-branch main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
