@@ -4,8 +4,7 @@
   "version": "0.0.14",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc -w",
-    "prepublish": "npm run build"
+    "build:watch": "tsc -w"
   },
   "bin": {
     "figure": "./dist/main.js"
