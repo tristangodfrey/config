@@ -1,6 +1,11 @@
 # Change Log - figure-nest
 
-This log was last generated on Tue, 10 Oct 2023 17:11:32 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Oct 2023 17:20:03 GMT and should not be manually modified.
+
+## 0.0.8
+Tue, 10 Oct 2023 17:20:03 GMT
+
+_Version update only_
 
 ## 0.0.7
 Tue, 10 Oct 2023 17:11:32 GMT
