@@ -33,12 +33,7 @@ kubernetes.command('secret')
             subSchema: appName
         })
 
-        console.log(instance.config);
-
         const secret = generateSecret(instance, options.valueSubstitution)
-
-        console.log(JSON.stringify(secret));
-
     })
 
 kubernetes.command('configmap')
