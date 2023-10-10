@@ -1,6 +1,13 @@
 # Change Log - figure-config
 
-This log was last generated on Sun, 08 Oct 2023 12:31:33 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Oct 2023 08:09:12 GMT and should not be manually modified.
+
+## 0.0.14
+Tue, 10 Oct 2023 08:09:12 GMT
+
+### Patches
+
+- Fix custom logger
 
 ## 0.0.13
 Sun, 08 Oct 2023 12:31:33 GMT
