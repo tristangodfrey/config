@@ -32,6 +32,6 @@ jobs:
         run: rush build
 
       - name: Publish to NPM
-        run: rush publish --apply
+        run: rush publish --apply --publish --target-branch main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
