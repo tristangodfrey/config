@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-cli",
+      "comment": "Remove a few console.logs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-cli"
+}
