@@ -19,17 +19,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14 # or another version if preferred
+          node-version: 18 # or another version if preferred
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Fetch Dependencies
-        run: |
-          npm ci
-          npm install -g @microsoft/rush
-          rush update
+      - name: Rush Install
+        run: node common/scripts/install-run-rush.js install
 
-      - name: Build Projects
-        run: rush build
+      - name: Rush rebuild
+        run: node common/scripts/install-run-rush.js rebuild --verbose
 
       - name: Publish to NPM
         run: rush publish --apply --publish --target-branch main
