@@ -43,7 +43,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Bump versions commit
-        run: git commit -m "Bump versions [skip ci]"
+        run: git add . && git commit -m "Bump versions [skip ci]"
 
       - name: Git push
         run: git push
