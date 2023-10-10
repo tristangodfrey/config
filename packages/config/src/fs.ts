@@ -8,7 +8,7 @@ export const loadConfig = (path: string) => {
         const data = fs.readFileSync(path, 'utf8')
         return yaml.load(data) as object
     } catch (e) {
-        logger.debug(`Could not find configuration file: ${path}`)
+        throw Error(`Could not find configuration file: ${path}`)
     }
 }
 
@@ -17,8 +17,6 @@ export const findDefaultConfigPath = () => {
 
     while (currentDir) {
         const packagePath = path.join(currentDir, 'package.json'); // Construct the path to package.json in the current directory
-
-        logger.log(`Searching for: ${packagePath}`);
 
         if (fs.existsSync(packagePath)) {
             const packageJson = JSON.parse(fs.readFileSync(packagePath).toString('utf-8'))

@@ -6,7 +6,6 @@ import {MappedConfig, Options} from "./options";
 
 export const processSchema = async (schema: Schema, subSchema?: string) => {
     const resolved = (await JsonRefs.resolveRefs(schema)).resolved as Schema;
-    logger.debug(`Loading subschema: ${subSchema}`);
 
     return (subSchema ? resolved?.properties?.[subSchema] : resolved) as Schema
 }
