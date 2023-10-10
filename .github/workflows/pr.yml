@@ -23,7 +23,7 @@ jobs:
           email: cibot@godfrey.nl
 
       - name: Authenticate with Token
-        run: git remote set-url origin https://${{ secrets.GITHUB_TOKEN }}@github.com/tristangodfrey/config.git
+        run: git remote set-url origin https://${{ secrets.GH_PAT }}@github.com/tristangodfrey/config.git
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -41,3 +41,4 @@ jobs:
         run: node common/scripts/install-run-rush.js publish --apply --publish --target-branch main
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
