@@ -2,6 +2,18 @@
   "name": "figure-nest",
   "entries": [
     {
+      "version": "0.0.11",
+      "tag": "figure-nest_v0.0.11",
+      "date": "Wed, 11 Oct 2023 15:23:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Make module global"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.10",
       "tag": "figure-nest_v0.0.10",
       "date": "Wed, 11 Oct 2023 11:18:10 GMT",
