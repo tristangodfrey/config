@@ -1,6 +1,7 @@
 import {default as pino} from "pino"
 import {Options, ReturnType} from "./options";
 import {init} from './init';
+import 'dotenv/config';
 
 export * from "./figure";
 export * from './fs';

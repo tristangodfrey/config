@@ -11,3 +11,23 @@ export const setupConfigFiles = async (path: string, schema: Schema, config: obj
     await fs.writeFile(join(path, 'default.yaml'), JSON.stringify(config));
 }
 
+export const createSchema = () => {
+    const schema = {
+        "title": "Test",
+        "description": "Configuration values for the IoT project",
+        "type": "object",
+        "properties": {
+            "appName": {
+                "type": "string",
+                "env": "APP_NAME"
+            },
+            "appDescription": {
+                "type": "string",
+                "env": "APP_DESCRIPTION"
+            },
+        },
+        "required": ["appName", "appDescription"]
+    };
+
+    return schema;
+}

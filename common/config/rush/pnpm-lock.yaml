@@ -42,6 +42,7 @@ importers:
       '@types/prompts': ^2.4.4
       bun-types: ^1.0.2
       dot-prop: ^6.0.1
+      dotenv: ^16.3.1
       js-yaml: ^4.1.0
       json-refs: ^3.0.15
       json-schema-library: ^9.1.2
@@ -51,10 +52,10 @@ importers:
       node-jq: ^4.0.1
       pino: ^8.15.1
       prompts: ^2.4.2
-      purify-ts: ^2.0.1
       typescript: ^5.2.2
     dependencies:
       dot-prop: 6.0.1
+      dotenv: 16.3.1
       js-yaml: 4.1.0
       json-refs: 3.0.15
       json-schema-library: 9.1.2
@@ -64,7 +65,6 @@ importers:
       node-jq: 4.0.1
       pino: 8.15.6
       prompts: 2.4.2
-      purify-ts: 2.0.1
     devDependencies:
       '@jest/globals': 29.7.0
       '@nestjs/common': 10.2.7
@@ -875,10 +875,6 @@ packages:
     resolution: {integrity: sha512-ACTuifTSIIbyksx2HTon3aFtCKWcID7/h3XEmRpDYdMCXxPbl+m9GteOJeaAkiAta/NJaSFuA7ahZ0NkwajDSw==}
     dev: true
 
-  /@types/json-schema/7.0.12:
-    resolution: {integrity: sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==}
-    dev: false
-
   /@types/json-schema/7.0.13:
     resolution: {integrity: sha512-RbSSoHliUbnXj3ny0CNFOoxrIDV6SUGyStHsvDqosw6CkdPV8TtWGlfecuK4ToyMEAql6pzNxgCFKanovUzlgQ==}
     dev: false
@@ -1514,6 +1510,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       is-obj: 2.0.0
+    dev: false
+
+  /dotenv/16.3.1:
+    resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
+    engines: {node: '>=12'}
     dev: false
 
   /download/6.2.5:
@@ -2960,12 +2961,6 @@ packages:
   /punycode/2.3.0:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
-    dev: false
-
-  /purify-ts/2.0.1:
-    resolution: {integrity: sha512-g17AdcyNtXyUuLgMfQN8bS2xPiTrxxkebe5Ssy234NX8ZpE2Nbk6bIXO5MNapFVb77jcv7a4Xt9NfPtuCLGiBQ==}
-    dependencies:
-      '@types/json-schema': 7.0.12
     dev: false
 
   /qs/6.11.2:
