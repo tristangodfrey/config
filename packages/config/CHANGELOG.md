@@ -1,6 +1,13 @@
 # Change Log - figure-config
 
-This log was last generated on Wed, 11 Oct 2023 09:09:40 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 16:54:52 GMT and should not be manually modified.
+
+## 0.0.17
+Wed, 11 Oct 2023 16:54:52 GMT
+
+### Patches
+
+- Add dotenv, improve logging
 
 ## 0.0.16
 Wed, 11 Oct 2023 09:09:40 GMT

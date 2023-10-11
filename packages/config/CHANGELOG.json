@@ -2,6 +2,18 @@
   "name": "figure-config",
   "entries": [
     {
+      "version": "0.0.17",
+      "tag": "figure-config_v0.0.17",
+      "date": "Wed, 11 Oct 2023 16:54:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add dotenv, improve logging"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.16",
       "tag": "figure-config_v0.0.16",
       "date": "Wed, 11 Oct 2023 09:09:40 GMT",
