@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import * as path from "path";
 import {Command, Option} from 'commander';
 import {configMap, secret} from "./utils/kubernetes";
@@ -52,14 +51,16 @@ program.command('validate')
     .addOption(OPTION_ENV)
     .action(validate)
 
-program.command('upload')
+const azure = program.command('azure').description('Azure DevOps resources')
+
+azure.command('upload')
     .description('Set remote configuration (Azure variable group) for a given configuration')
     .argument('<sub_schema>', 'Sub-schema to use')
     .option('-p --pat <personal_access_token>', 'Azure DevOps personal access token')
     .option('-o --org <organisation>', 'Azure DevOps organisation')
     .action(upload)
 
-program.command('generate')
+azure.command('generate')
     .description('Generate Typescript declaration file for config')
     .option('-o --output <output_path>', 'Generated file output path')
     .option('-p --config-path <config_path>', 'Config directory path')
