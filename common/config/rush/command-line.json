@@ -24,6 +24,7 @@
     {
       "commandKind": "bulk",
       "name": "test",
+      "allowWarningsInSuccessfulBuild": true,
       "summary": "Test packages",
       "enableParallelism": true,
       "incremental": true,
