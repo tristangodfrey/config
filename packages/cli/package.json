@@ -4,7 +4,8 @@
   "version": "0.0.16",
   "scripts": {
     "build": "tsc",
-    "build:watch": "tsc -w"
+    "build:watch": "tsc -w",
+    "test": "bun test"
   },
   "bin": {
     "figure": "./dist/main.js"

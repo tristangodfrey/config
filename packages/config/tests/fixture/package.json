@@ -1,0 +1,6 @@
+{
+  "name": "test",
+  "figure": {
+	"configDirectory": "./custom-config-dir"
+  }
+}

@@ -1,7 +1,8 @@
 import * as prompts from "prompts";
-import axios, {Axios, AxiosError} from "axios";
-import { VariableGroupsAPI } from "../devops-api";
+import {VariableGroupsAPI} from "../devops-api";
 import {VariableGroupParameters} from "../devops-api/generated";
+import * as path from "path";
+import {figure} from "figure-config";
 
 export const createVariableGroup = async (
     variables: any,
@@ -70,13 +71,46 @@ export const createVariableGroup = async (
             console.error(`Error creating variable group ${cleanName}`)
         }
     }
+}
 
+export const upload = async (subSchema: any, options: any) => {
+    const configFolderPath = path.join(__dirname, '../config')
 
+    const cliConfig = await figure({
+        configFolderPath: configFolderPath,
+        subSchema: 'azureDevops',
+        debug: true,
+        prompt: true
+    });
 
+    console.log(cliConfig);
 
+    const appConfig = await figure({
+        subSchema: subSchema,
+        returnInstance: true
+    })
 
-    //Check if the variable group exists
-    // const res = await VariablegroupsService.variablegroupsAdd(org, b).catch((err) => console.error(err));
+    const vars = appConfig.env.getConfigNodesForEnv()
 
-    // console.log(res);
+    //Iterate each of them and ask for a value
+    const variables: any = {}
+
+    //Upload the list to azure variable group
+    for (const envVar of vars) {
+
+        const response = await prompts({
+            type: 'text',
+            name: 'value',
+            message: envVar.envVarName,
+            initial: envVar.configValue
+        });
+
+        variables[envVar.envVarName] = {
+            value: response.value,
+            isReadOnly: false,
+            isSecret: envVar.isSecret
+        }
+    }
+
+    await createVariableGroup(variables, subSchema, cliConfig.pat, options.org, cliConfig.project)
 }

@@ -1,7 +1,7 @@
 import * as path from "path";
 import {compile} from "json-schema-to-typescript";
 import * as fs from "fs";
-import {getPath, getSchema} from "figure-config";
+import {getConfigPath, getPath, getSchema} from "figure-config";
 
 const gen = (p: string, schema: any) => {
 
@@ -29,5 +29,16 @@ export const generate = (configFolderPath: string) => {
 
     if (process.env.FIGURE_DEV_MODE) {
         gen(path.join(process.cwd(), 'node_modules/figure-config/src/config.ts'), schema)
+    }
+}
+
+export const generateDeclarationFiles = async (options: any) => {
+    const configFolderPath = options.configPath ?? await getConfigPath()
+
+    try {
+        generate(configFolderPath)
+        console.log("Configuration types generated")
+    } catch(e) {
+        console.error(e);
     }
 }

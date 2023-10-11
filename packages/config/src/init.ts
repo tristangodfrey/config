@@ -1,5 +1,12 @@
 import {Logger, MappedConfig, Options, ReturnType} from "./options";
-import {findDefaultConfigPath, getPath, getSchema, loadConfig} from "./fs";
+import {
+    findConfigPathFromPackageJson,
+    findDefaultConfigPath,
+    getConfigPath,
+    getPath,
+    getSchema,
+    loadConfig
+} from "./fs";
 import {getConfigNodesForEnv, substituteEnvVars} from "./env";
 import {validate} from "jsonschema";
 import {Path} from "./config-node";
@@ -19,7 +26,7 @@ export const init = async <O extends Options>(options: O, logger: Logger): Promi
     const processed = new FigureData<O>();
 
     if (! options.configFolderPath) {
-        const path = process.env.FIGURE_PATH ?? findDefaultConfigPath();
+        const path = await getConfigPath()
 
         if (! path) {
             throw new TypeError(`Missing option: configFolderPath`);
