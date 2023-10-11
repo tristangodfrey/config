@@ -1,22 +1,19 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "experimentalDecorators": true,
+    "target": "es2017",
     "module": "CommonJS",
-    "target": "ESNext",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "strict": true,
-    "downlevelIteration": true,
-    "skipLibCheck": true,
-    "jsx": "react-jsx",
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "types": [
-      "bun-types",
-      "node"
-    ]
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "exclude": ["tests", "dist"]
 }

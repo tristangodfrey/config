@@ -1,6 +1,6 @@
 {
   "name": "figure-cli",
-  "module": "main.ts",
+  "module": "src/main.ts",
   "version": "0.0.17",
   "scripts": {
     "build": "tsc",

@@ -1,4 +1,4 @@
-import * as prompts from "prompts";
+import prompts from "prompts";
 import {VariableGroupsAPI} from "../devops-api";
 import {VariableGroupParameters} from "../devops-api/generated";
 import * as path from "path";
