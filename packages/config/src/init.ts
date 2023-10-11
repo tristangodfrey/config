@@ -54,9 +54,17 @@ export const init = async <O extends Options>(options: O, logger: Logger): Promi
     // Default
     const defaultConfig = loadConfig(getPath(options.configFolderPath, 'default'))
 
+    if (Object.keys(defaultConfig).length === 0) {
+        logger.debug('Default configuration is empty');
+    }
+
     const env = options.env ?? process.env.NODE_ENV
 
     const envConfig = loadConfig(getPath(options.configFolderPath, env))
+
+    if (Object.keys(envConfig).length === 0) {
+        logger.debug(`Environment-specific configuration for "${env}" is empty`);
+    }
 
     processed.schema = await processSchema(processed.schema, options.subSchema as string)
 
@@ -67,6 +75,15 @@ export const init = async <O extends Options>(options: O, logger: Logger): Promi
     logger.debug(`Processed config:`)
     logger.debug(processed.config)
 
+    if (!processed.config) {
+        throw Error('Failed to find any configuration values after processing');
+    }
+
+    return handleConfig(processed, options, logger)
+
+}
+
+export const handleConfig = async <O extends Options>(processed: FigureData<any>, options: O, logger: Logger) => {
     //Validate configuration
     let result = validate(processed.config, processed.schema)
 
@@ -106,5 +123,4 @@ export const init = async <O extends Options>(options: O, logger: Logger): Promi
     }
 
     return new FigureInstance<MappedConfig<O>>(processed.schema, processed.config, options, result).config as ReturnType<O>;
-
 }

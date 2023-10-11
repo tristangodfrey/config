@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-config",
+      "comment": "Add dotenv, improve logging",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-config"
+}
