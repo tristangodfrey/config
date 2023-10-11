@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-nest",
+      "comment": "Make module global",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-nest"
+}
