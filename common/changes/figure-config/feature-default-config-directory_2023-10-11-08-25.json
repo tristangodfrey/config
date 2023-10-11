@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-config",
+      "comment": "Add ability to load from default config directory <base>/config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-config"
+}

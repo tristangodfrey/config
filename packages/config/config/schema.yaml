@@ -1,0 +1,1 @@
+{"title":"Test","description":"Configuration values for the IoT project","type":"object","properties":{"appName":{"type":"string","env":"APP_NAME"},"appDescription":{"type":"string","env":"APP_DESCRIPTION"}},"required":["appName","appDescription"]}

@@ -8,14 +8,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - uses: oven-sh/setup-bun@v1
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
-      - name: Git config user
-        uses: snow-actions/git-config-user@v1.0.0
-        with:
-          name: CI Bot
-          email: cibot@godfrey.nl
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -25,3 +21,5 @@ jobs:
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
         run: node common/scripts/install-run-rush.js rebuild --verbose
+      - name: Rush test
+        run: node common/scripts/install-run-rush.js test

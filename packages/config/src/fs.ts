@@ -1,18 +1,37 @@
 import fs from "fs";
+import {stat} from "fs/promises"
 import * as yaml from "js-yaml";
 import {Schema} from "jsonschema";
-import path from "path";
+import path, {join} from "path";
 
-export const loadConfig = (path: string) => {
+export const loadConfig = (path: string): object => {
     try {
         const data = fs.readFileSync(path, 'utf8')
         return yaml.load(data) as object
     } catch (e) {
-        throw Error(`Could not find configuration file: ${path}`)
+        return {};
     }
 }
 
-export const findDefaultConfigPath = () => {
+export const getConfigPath = async () => {
+    return process.env.FIGURE_PATH ?? await findDefaultConfigPath() ?? findConfigPathFromPackageJson()
+}
+
+export const findDefaultConfigPath = async () => {
+    //check if ./config/schema.yaml exists
+    const currentDir = process.cwd();
+
+    const path = join(currentDir, 'config', 'schema.yaml');
+
+    try {
+        await stat(path)
+        return join(currentDir, 'config');
+    } catch {
+        return null;
+    }
+}
+
+export const findConfigPathFromPackageJson = () => {
     let currentDir = process.cwd(); // Start from the current directory or a specified directory
 
     while (currentDir) {

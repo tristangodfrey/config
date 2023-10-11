@@ -21,6 +21,15 @@
       "watchForChanges": true,
       "ignoreMissingScript": true
     },
+    {
+      "commandKind": "bulk",
+      "name": "test",
+      "allowWarningsInSuccessfulBuild": true,
+      "summary": "Test packages",
+      "enableParallelism": true,
+      "incremental": true,
+      "ignoreMissingScript": true
+    },
     // {
     //   /**
     //    * (Required) Determines the type of custom command.

@@ -12,7 +12,7 @@ export * from './config-node';
 
 export const figure = async <O extends Options = Options>(options?: O): Promise<ReturnType<O>> => {
 
-    const logger = options.logger ?? pino({
+    const logger = options?.logger ?? pino({
         level: options?.debug ? 'debug' : 'error',
         customLevels: {
             'log': 0
