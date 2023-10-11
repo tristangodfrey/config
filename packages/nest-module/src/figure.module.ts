@@ -1,9 +1,10 @@
 import {Options as FigureOptions} from "figure-config"
 import {FigureService} from "./figure.service";
-import {DynamicModule, Module, Provider} from "@nestjs/common";
+import {DynamicModule, Global, Module, Provider} from "@nestjs/common";
 
 export const CONFIG = 'CONFIG';
 
+@Global()
 @Module({})
 export class FigureModule {
     static register(options?: FigureOptions): DynamicModule {
@@ -11,20 +12,16 @@ export class FigureModule {
             module: FigureModule,
             providers: [
                 {
-                    provide: 'CONFIG_OPTIONS',
-                    useValue: options || null,
-                },
-                {
                     provide: CONFIG,
                     useFactory: async (figureService: FigureService) => {
-                        await figureService.init();
+                        await figureService.init(options);
                         return figureService.getConfig();
                     },
                     inject: [FigureService]
                 } as Provider,
                 FigureService,
             ],
-            exports: [FigureService, 'CONFIG'],
+            exports: [FigureService, CONFIG],
         };
     }
 }
