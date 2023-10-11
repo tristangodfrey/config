@@ -2,6 +2,18 @@
   "name": "figure-config",
   "entries": [
     {
+      "version": "0.0.16",
+      "tag": "figure-config_v0.0.16",
+      "date": "Wed, 11 Oct 2023 09:09:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add ability to load from default config directory <base>/config"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.15",
       "tag": "figure-config_v0.0.15",
       "date": "Tue, 10 Oct 2023 17:11:32 GMT",

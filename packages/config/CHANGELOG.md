@@ -1,6 +1,13 @@
 # Change Log - figure-config
 
-This log was last generated on Tue, 10 Oct 2023 17:11:32 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 09:09:40 GMT and should not be manually modified.
+
+## 0.0.16
+Wed, 11 Oct 2023 09:09:40 GMT
+
+### Patches
+
+- Add ability to load from default config directory <base>/config
 
 ## 0.0.15
 Tue, 10 Oct 2023 17:11:32 GMT
