@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-cli",
+      "comment": "Pass arguments to CLI properly",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-cli"
+}
