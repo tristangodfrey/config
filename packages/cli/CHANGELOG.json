@@ -2,6 +2,24 @@
   "name": "figure-cli",
   "entries": [
     {
+      "version": "0.0.20",
+      "tag": "figure-cli_v0.0.20",
+      "date": "Thu, 12 Oct 2023 10:43:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add shell script to pick executable for CLI (bun/node)"
+          },
+          {
+            "comment": "Pass arguments to CLI properly"
+          },
+          {
+            "comment": "Fix `generate` command"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.19",
       "tag": "figure-cli_v0.0.19",
       "date": "Wed, 11 Oct 2023 16:54:52 GMT",
