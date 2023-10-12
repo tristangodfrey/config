@@ -7,8 +7,9 @@
     "build:watch": "tsc -w",
     "test": "bun test"
   },
+  "files": ["./dist", "src", "README.md"],
   "bin": {
-    "figure": "./dist/main.js"
+    "figure": "./scripts/main.sh"
   },
   "dependencies": {
     "@openapitools/openapi-generator-cli": "^2.7.0",

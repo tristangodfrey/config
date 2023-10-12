@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-cli",
+      "comment": "add shell script to pick executable for CLI (bun/node)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-cli"
+}
