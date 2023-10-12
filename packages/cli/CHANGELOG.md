@@ -1,6 +1,14 @@
 # Change Log - figure-cli
 
-This log was last generated on Wed, 11 Oct 2023 16:54:52 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 10:25:52 GMT and should not be manually modified.
+
+## 0.0.20
+Thu, 12 Oct 2023 10:25:52 GMT
+
+### Patches
+
+- add shell script to pick executable for CLI (bun/node)
+- Pass arguments to CLI properly
 
 ## 0.0.19
 Wed, 11 Oct 2023 16:54:52 GMT
