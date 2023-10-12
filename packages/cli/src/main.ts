@@ -59,7 +59,7 @@ azure.command('upload')
     .option('-o --org <organisation>', 'Azure DevOps organisation')
     .action(upload)
 
-azure.command('generate')
+program.command('generate')
     .description('Generate Typescript declaration file for config')
     .option('-o --output <output_path>', 'Generated file output path')
     .option('-p --config-path <config_path>', 'Config directory path')
