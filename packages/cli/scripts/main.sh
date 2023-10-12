@@ -7,7 +7,7 @@ PARENT_DIR="$(dirname "$(dirname "$0")")"
 
 # If the last command was successful (exit status 0), use 'bun'
 if [ $? -eq 0 ]; then
-    bun "$PARENT_DIR/src/main.ts"
+    bun "$PARENT_DIR/src/main.ts" "$@"
 else
-    node "$../dist/main.js"
+    node "$../dist/main.js" "$@"
 fi

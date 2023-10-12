@@ -1,5 +1,5 @@
 import * as path from "path";
-import {Command, Option} from 'commander';
+import {Command, Option, program} from 'commander';
 import {configMap, secret} from "./utils/kubernetes";
 import {upload} from "./utils/azure-devops";
 import * as fs from "node:fs";
@@ -8,7 +8,6 @@ import {validate} from "./utils/validate";
 
 
 // Init
-const program = new Command();
 const packageJson = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../package.json'), 'utf8'));
 program.version(packageJson.version).name('figure')
 
