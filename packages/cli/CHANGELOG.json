@@ -2,6 +2,18 @@
   "name": "figure-cli",
   "entries": [
     {
+      "version": "0.0.21",
+      "tag": "figure-cli_v0.0.21",
+      "date": "Mon, 16 Oct 2023 15:26:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix generate command"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.20",
       "tag": "figure-cli_v0.0.20",
       "date": "Thu, 12 Oct 2023 10:43:14 GMT",
