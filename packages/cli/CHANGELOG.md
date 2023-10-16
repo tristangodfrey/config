@@ -1,6 +1,13 @@
 # Change Log - figure-cli
 
-This log was last generated on Thu, 12 Oct 2023 10:43:14 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Oct 2023 15:32:38 GMT and should not be manually modified.
+
+## 0.0.21
+Mon, 16 Oct 2023 15:32:38 GMT
+
+### Patches
+
+- Fix generate command
 
 ## 0.0.20
 Thu, 12 Oct 2023 10:43:14 GMT
