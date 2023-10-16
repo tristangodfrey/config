@@ -66,5 +66,4 @@ program.command('generate')
     .option('-s --sub-schema <sub_schema>', 'Generate type for sub-config instead of full config')
     .action(generateDeclarationFiles)
 
-
 program.parse(process.argv)
