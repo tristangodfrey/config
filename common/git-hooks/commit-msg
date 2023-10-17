@@ -24,9 +24,4 @@
 #	exit 1
 #fi
 
-if ! command -v pnpm &> /dev/null
-then
-  node ./common/scripts/install-run-rush-pnpm.js exec -- commitlint --edit ${1}
-else
-  pnpm exec -- commitlint --edit ${1}
-fi
+pnpm exec -- commitlint --edit ${1}

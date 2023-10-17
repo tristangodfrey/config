@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: oven-sh/setup-bun@v1
+
+      - uses: pnpm/action-setup@v2
+        name: Set up PNPM
+        with:
+          version: 8
+
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
