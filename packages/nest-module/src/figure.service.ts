@@ -1,5 +1,5 @@
 import {Injectable, Logger} from "@nestjs/common";
-import {Config, figure, Options as FigureOptions} from "figure-config"
+import {Config, figure, Options as FigureOptions} from "@figure-config/core"
 
 @Injectable()
 export class FigureService {

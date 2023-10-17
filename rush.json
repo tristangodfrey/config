@@ -336,19 +336,24 @@
    */
   "projects": [
     {
-      "packageName": "figure-cli",
+      "packageName": "@figure-config/cli",
       "projectFolder": "packages/cli",
       "shouldPublish": true
     },
     {
-      "packageName": "figure-config",
+      "packageName": "@figure-config/core",
       "projectFolder": "packages/config",
       "shouldPublish": true
     },
     {
-      "packageName": "figure-nest",
+      "packageName": "@figure-config/nest",
       "projectFolder": "packages/nest-module",
       "shouldPublish": true
+    },
+    {
+      "packageName": "@figure-config/types",
+      "projectFolder": "packages/types",
+      "shouldPublish": false
     }
   ]
 }

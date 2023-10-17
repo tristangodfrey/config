@@ -1,4 +1,4 @@
-import {EnvVar, EnvVarValue, figure, FigureInstance, getSchema} from "figure-config";
+import {EnvVar, EnvVarValue, figure, FigureInstance, getSchema} from "@figure-config/core";
 import {ConfigMap, Secret} from "kubernetes-models/v1";
 
 const subAzure = (o: EnvVar[]) => o.reduce((o, curr) => ({...o, [curr.name]: `$(${curr.name})`}), {})

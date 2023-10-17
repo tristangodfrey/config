@@ -1,6 +1,6 @@
 import {Schema} from "jsonschema";
 import {FigureInstance} from "./figure";
-import {Config} from "./config";
+import {Config} from "@figure-config/types";
 
 export type ReturnType<O extends Options> =
     O["returnInstance"] extends true ? FigureInstance<MappedConfig<O>> : MappedConfig<O>
