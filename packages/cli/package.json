@@ -3,33 +3,38 @@
   "module": "src/main.ts",
   "version": "0.0.21",
   "scripts": {
-    "build": "tsc",
-    "build:watch": "tsc -w",
-    "test": "bun test"
+	"build": "tsc",
+	"build:watch": "tsc -w",
+	"test": "bun test"
   },
-  "files": ["./dist", "src", "README.md"],
+  "files": [
+	"dist",
+	"src",
+	"README.md",
+	"config"
+  ],
   "bin": {
-    "figure": "./scripts/main.sh"
+	"figure": "./scripts/main.sh"
   },
   "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.7.0",
-    "axios": "^1.5.0",
-    "commander": "^11.0.0",
-    "json-schema-to-typescript": "^13.1.1",
-    "kubernetes-models": "^4.3.1",
-    "prompts": "^2.4.2",
-    "typescript": "^5.2.2"
+	"@openapitools/openapi-generator-cli": "^2.7.0",
+	"axios": "^1.5.0",
+	"commander": "^11.0.0",
+	"json-schema-to-typescript": "^13.1.1",
+	"kubernetes-models": "^4.3.1",
+	"prompts": "^2.4.2",
+	"typescript": "^5.2.2"
   },
   "figure": {
-    "configFolderPath": "./config"
+	"configFolderPath": "./config"
   },
   "devDependencies": {
-    "@types/node": "^20.8.2",
-    "@types/prompts": "^2.4.4",
-    "bun-types": "^1.0.2",
-    "figure-config": "workspace:*"
+	"@types/node": "^20.8.2",
+	"@types/prompts": "^2.4.4",
+	"bun-types": "^1.0.2",
+	"figure-config": "workspace:*"
   },
   "peerDependencies": {
-    "figure-config": "workspace:*"
+	"figure-config": "workspace:*"
   }
 }
