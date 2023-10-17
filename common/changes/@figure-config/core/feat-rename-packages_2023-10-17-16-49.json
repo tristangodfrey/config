@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/core",
+      "comment": "Rename package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/core"
+}
