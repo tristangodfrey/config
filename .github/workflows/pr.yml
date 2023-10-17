@@ -4,13 +4,13 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - closed
+#    types:
+#      - closed
 
 jobs:
   publish:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+#    if: github.event.pull_request.merged == true
 
     steps:
       - uses: actions-rs/toolchain@v1
