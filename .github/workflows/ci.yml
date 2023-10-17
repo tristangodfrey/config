@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: oven-sh/setup-bun@v1
+
+      - uses: pnpm/action-setup@v2
+        name: Set up PNPM
+        with:
+          version: 8
+
       - uses: actions/checkout@v3
         with:
           fetch-depth: 2
@@ -21,6 +27,16 @@ jobs:
           node-version: 18
       - name: Verify Change Logs
         run: node common/scripts/install-run-rush.js change --verify
+
+      # Cache rush/pnpm modules
+      - name: Cache PNPM modules
+        uses: actions/cache@v3
+        with:
+          path: common/temp/pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - name: Rush Install
         run: node common/scripts/install-run-rush.js install
       - name: Rush rebuild
