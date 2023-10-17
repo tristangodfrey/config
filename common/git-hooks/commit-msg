@@ -23,4 +23,10 @@
 #  echo "Invalid commit message: The message must contain at least 3 words."
 #	exit 1
 #fi
-pnpm exec -- commitlint --edit ${1}
+
+if ! command -v pnpm &> /dev/null
+then
+  node ./common/scripts/install-run-rush-pnpm.js exec -- commitlint --edit ${1}
+else
+  pnpm exec -- commitlint --edit ${1}
+fi
