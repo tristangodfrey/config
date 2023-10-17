@@ -1,6 +1,13 @@
 # Change Log - figure-config
 
-This log was last generated on Wed, 11 Oct 2023 16:54:52 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Oct 2023 14:00:24 GMT and should not be manually modified.
+
+## 0.0.18
+Tue, 17 Oct 2023 14:00:24 GMT
+
+### Patches
+
+- Remove typescript from peer dependencies
 
 ## 0.0.17
 Wed, 11 Oct 2023 16:54:52 GMT
