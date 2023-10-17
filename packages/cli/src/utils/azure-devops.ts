@@ -2,7 +2,7 @@ import prompts from "prompts";
 import {VariableGroupsAPI} from "../devops-api";
 import {VariableGroupParameters} from "../devops-api/generated";
 import * as path from "path";
-import {figure} from "figure-config";
+import {figure} from "@figure-config/core";
 
 export const createVariableGroup = async (
     variables: any,

@@ -1,7 +1,7 @@
 import * as path from "path";
 import {compile} from "json-schema-to-typescript";
 import * as fs from "fs/promises";
-import {getConfigPath, getPath, getSchema} from "figure-config";
+import {getConfigPath, getPath, getSchema} from "@figure-config/core";
 
 const gen = async (p: string, schema: any, subSchema: string) => {
     const ts = await compile(schema, 'Config', {
@@ -21,13 +21,13 @@ const gen = async (p: string, schema: any, subSchema: string) => {
 
 const generate = async (configFolderPath: string, subSchema: string) => {
 
-    const modulePath = path.join(process.cwd(), 'node_modules/figure-types')
+    const modulePath = path.join(process.cwd(), 'node_modules/@@figure-config/core/types')
 
     await fs.mkdir(modulePath).catch(e => e)
 
     await fs.writeFile(path.join(modulePath, '/package.json'), JSON.stringify({
         "name": "figure-types",
-        "description": "Generated types for figure-config",
+        "description": "Generated types for @figure-config/core",
         "types": "index.d.ts"
     }))
 

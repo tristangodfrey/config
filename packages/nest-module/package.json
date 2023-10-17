@@ -1,5 +1,5 @@
 {
-	"name": "figure-nest",
+	"name": "@figure-config/nest",
 	"version": "0.0.14",
 	"module": "index.ts",
 	"main": "./dist/index.js",
@@ -9,8 +9,8 @@
 		"@nestjs/testing": "^10.2.7",
 		"@types/node": "^20.6.3",
 		"bun-types": "^1.0.2",
-		"figure-cli": "workspace:*",
-		"figure-config": "workspace:*",
+		"@figure-config/cli": "workspace:*",
+		"@figure-config/core": "workspace:*",
 		"rxjs": "^7.8.1",
 		"typescript": "^5.2.2"
 	},
@@ -23,7 +23,7 @@
 		"configFolderPath": "./config"
 	},
 	"peerDependencies": {
-		"figure-config": "workspace:*",
+		"@figure-config/core": "workspace:*",
 		"typescript": "^5.0.0"
 	},
 	"dependencies": {

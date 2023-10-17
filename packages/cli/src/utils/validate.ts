@@ -1,4 +1,4 @@
-import {figure} from "figure-config";
+import {figure} from "@figure-config/core";
 
 export const validate = async (appName: any, options: any) => {
     const config = await figure({

@@ -1,4 +1,4 @@
-import {Options as FigureOptions} from "figure-config"
+import {Options as FigureOptions} from "@figure-config/core"
 import {FigureService} from "./figure.service";
 import {DynamicModule, Global, Module, Provider} from "@nestjs/common";
 

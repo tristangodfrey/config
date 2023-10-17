@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/nest",
+      "comment": "Rename package",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/nest"
+}
