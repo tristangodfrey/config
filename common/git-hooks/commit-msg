@@ -24,4 +24,4 @@
 #	exit 1
 #fi
 
-cat "${1}" | conventional_commits_linter --from-stdin --allow-angular-type-only
+cat "${1}" | conventional_commits_linter --from-stdin
