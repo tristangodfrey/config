@@ -1,54 +1,49 @@
 import * as path from "path";
 import {compile} from "json-schema-to-typescript";
-import * as fs from "fs";
+import * as fs from "fs/promises";
 import {getConfigPath, getPath, getSchema} from "figure-config";
 
-
-
-const gen = (p: string, schema: any, subSchema: string) => {
-
-    compile(schema, 'Config', {
+const gen = async (p: string, schema: any, subSchema: string) => {
+    const ts = await compile(schema, 'Config', {
         additionalProperties: false,
+    });
 
-    }).then(ts => {
-        const match = ts.match(/^export interface (\w+)/m);
-        const interfaceName = match ? match[1] : null;
+    const match = ts.match(/^export interface (\w+)/m);
+    const interfaceName = match ? match[1] : null;
 
+    const append = subSchema
+        ? `\nexport type Config = ${interfaceName}["${subSchema}"]; \n`
+        : `\nexport type Config = ${interfaceName}; \n`
 
-        const packageJson = {
-            "name": "figure-types",
-            "description": "Generated types for figure-config",
-            "types": "index.d.ts"
-        }
+    await fs.writeFile(p, ts.concat(append))
 
-        const append = subSchema
-            ? `\nexport type Config = ${interfaceName}["${subSchema}"]; \n`
-            : `\nexport type Config = ${interfaceName}; \n`
-
-        const res = ts.concat(append);
-
-        fs.writeFileSync(p, res)
-    })
 }
 
-const generate = (configFolderPath: string, subSchema: string) => {
-    const p = path.join(process.cwd(), 'node_modules/figure-config/dist/config.d.ts')
+const generate = async (configFolderPath: string, subSchema: string) => {
+
+    const modulePath = path.join(process.cwd(), 'node_modules/figure-types')
+
+    await fs.mkdir(modulePath).catch(e => e)
+
+    await fs.writeFile(path.join(modulePath, '/package.json'), JSON.stringify({
+        "name": "figure-types",
+        "description": "Generated types for figure-config",
+        "types": "index.d.ts"
+    }))
+
+    const p = path.join(modulePath, '/index.d.ts')
 
     const schema = getSchema(getPath(configFolderPath, 'schema'))
 
-    gen(p, schema, subSchema)
-
-    if (process.env.FIGURE_DEV_MODE) {
-        gen(path.join(process.cwd(), 'node_modules/figure-config/src/config.ts'), schema, subSchema)
-    }
+    await gen(p, schema, subSchema)
 }
 
 export const generateDeclarationFiles = async (options: any) => {
     const configFolderPath = options.configPath ?? await getConfigPath()
 
     try {
-        generate(configFolderPath, options.subSchema)
-        console.log("Configuration types generated")
+        await generate(configFolderPath, options.subSchema)
+        console.log("Configuration package generated")
     } catch (e) {
         console.error(e);
     }
