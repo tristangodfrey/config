@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "figure-config",
+      "comment": "Remove typescript from peer dependencies",
+      "type": "patch"
+    }
+  ],
+  "packageName": "figure-config"
+}
