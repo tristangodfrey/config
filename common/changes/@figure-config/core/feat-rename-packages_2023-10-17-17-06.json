@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/core",
+      "comment": "Remove peer dep",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/core"
+}
