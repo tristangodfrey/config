@@ -1,0 +1,10 @@
+{
+  "name": "figure",
+  "devDependencies": {
+    "@commitlint/cli": "^17.8.0",
+    "@commitlint/config-conventional": "^17.8.0"
+  },
+  "scripts": {
+    "commitlint": "commitlint"
+  }
+}
