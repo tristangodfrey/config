@@ -13,6 +13,12 @@ jobs:
     if: github.event.pull_request.merged == true
 
     steps:
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - run: cargo install conventional_commits_linter
+
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:

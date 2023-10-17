@@ -24,4 +24,4 @@
 #	exit 1
 #fi
 
-pnpm exec -- commitlint --edit ${1}
+cat "${1}" | conventional_commits_linter --from-stdin --allow-angular-type-only
