@@ -13,6 +13,11 @@ jobs:
     if: github.event.pull_request.merged == true
 
     steps:
+      - uses: pnpm/action-setup@v2
+        name: Set up PNPM
+        with:
+          version: 8
+
       - name: Checkout Repo
         uses: actions/checkout@v2
         with:
