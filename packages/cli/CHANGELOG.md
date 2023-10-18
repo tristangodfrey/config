@@ -1,6 +1,13 @@
-# Change Log - figure-cli
+# Change Log - @figure-config/cli
 
-This log was last generated on Mon, 16 Oct 2023 15:32:38 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 08:09:26 GMT and should not be manually modified.
+
+## 0.0.22
+Wed, 18 Oct 2023 08:09:26 GMT
+
+### Patches
+
+- Rename package
 
 ## 0.0.21
 Mon, 16 Oct 2023 15:32:38 GMT

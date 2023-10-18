@@ -1,6 +1,14 @@
-# Change Log - figure-config
+# Change Log - @figure-config/core
 
-This log was last generated on Wed, 11 Oct 2023 16:54:52 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 08:09:26 GMT and should not be manually modified.
+
+## 0.0.18
+Wed, 18 Oct 2023 08:09:26 GMT
+
+### Patches
+
+- Rename package
+- Remove peer dep
 
 ## 0.0.17
 Wed, 11 Oct 2023 16:54:52 GMT
