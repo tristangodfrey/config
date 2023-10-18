@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Code formatting",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}

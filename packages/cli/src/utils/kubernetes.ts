@@ -24,7 +24,7 @@ const generateSecret = <T>(instance: FigureInstance<T>, mode: string) => {
 
         kvPairs = subValue(values.filter(v => v.isSecret));
     }
-    const secret = new Secret({ data: kvPairs, metadata: { name: instance.options.subSchema as string } })
+    const secret = new Secret({data: kvPairs, metadata: {name: instance.options.subSchema as string}})
 
     return secret;
 }
@@ -32,7 +32,7 @@ const generateSecret = <T>(instance: FigureInstance<T>, mode: string) => {
 const generateConfigMap = <T>(instance: FigureInstance<T>, mode: string) => {
     const env = instance.env.getEnvVars()
 
-    const secrets = env.filter(e => ! e.isSecret)
+    const secrets = env.filter(e => !e.isSecret)
 
     let kvPairs
 
@@ -43,7 +43,7 @@ const generateConfigMap = <T>(instance: FigureInstance<T>, mode: string) => {
     if (mode === 'value') {
         //Get the values
     }
-    const cm = new ConfigMap({ data: kvPairs })
+    const cm = new ConfigMap({data: kvPairs})
 
     console.log(cm.toJSON());
 }
