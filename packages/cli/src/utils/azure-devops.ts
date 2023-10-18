@@ -54,9 +54,6 @@ export const createVariableGroup = async (
                 //@ts-ignore
                 console.error(e.response.data)
             }
-
-
-
         }
 
 
