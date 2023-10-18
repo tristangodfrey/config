@@ -21,7 +21,7 @@ const gen = async (p: string, schema: any, subSchema: string) => {
 
 const generate = async (configFolderPath: string, subSchema: string) => {
 
-    const modulePath = path.join(process.cwd(), 'node_modules/@@figure-config/core/types')
+    const modulePath = path.join(process.cwd(), 'node_modules/@figure-config/core/types')
 
     await fs.mkdir(modulePath).catch(e => e)
 
