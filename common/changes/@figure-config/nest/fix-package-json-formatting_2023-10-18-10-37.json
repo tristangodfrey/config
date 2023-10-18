@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/nest",
+      "comment": "Format package.json",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/nest"
+}
