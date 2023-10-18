@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Fix generated module path",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
