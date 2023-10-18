@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Fix typo in generated package name",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
