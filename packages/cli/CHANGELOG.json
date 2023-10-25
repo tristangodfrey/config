@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.26",
+      "tag": "@figure-config/cli_v0.0.26",
+      "date": "Wed, 25 Oct 2023 12:45:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bash script"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.25",
       "tag": "@figure-config/cli_v0.0.25",
       "date": "Wed, 18 Oct 2023 10:59:34 GMT",
