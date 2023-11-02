@@ -2,6 +2,26 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.28",
+      "tag": "@figure-config/cli_v0.0.28",
+      "date": "Thu, 02 Nov 2023 14:39:37 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add support for multiple environments when validating: `figure validate -e production,acceptance`"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.22`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.22`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.27",
       "tag": "@figure-config/cli_v0.0.27",
       "date": "Thu, 02 Nov 2023 13:54:18 GMT",
