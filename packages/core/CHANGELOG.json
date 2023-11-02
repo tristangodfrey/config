@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.21",
+      "tag": "@figure-config/core_v0.0.21",
+      "date": "Thu, 02 Nov 2023 13:49:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix path handling"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.20",
       "tag": "@figure-config/core_v0.0.20",
       "date": "Wed, 18 Oct 2023 10:59:34 GMT",
