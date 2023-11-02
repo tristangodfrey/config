@@ -7,6 +7,11 @@ import path, { join } from "path";
 export const loadConfig = (path: string): object => {
     try {
         const data = fs.readFileSync(path, "utf8");
+
+        if (!data) {
+            return {};
+        }
+
         return yaml.load(data) as object;
     } catch (e) {
         return {};

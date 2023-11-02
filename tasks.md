@@ -15,3 +15,4 @@
 - [x] Add rush  
 - [x] Publish packages with rush   
 - [ ] ?? [cli]: Generate a full package e.g. figure-types inside the local node_modules directory to circumvent PNPM magic
+- [ ] [core] Error handling/logging: empty config file
