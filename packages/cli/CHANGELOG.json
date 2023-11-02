@@ -2,6 +2,26 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.27",
+      "tag": "@figure-config/cli_v0.0.27",
+      "date": "Thu, 02 Nov 2023 13:54:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix validation, use winston logger"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.21`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.21`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.26",
       "tag": "@figure-config/cli_v0.0.26",
       "date": "Wed, 25 Oct 2023 12:47:33 GMT",
