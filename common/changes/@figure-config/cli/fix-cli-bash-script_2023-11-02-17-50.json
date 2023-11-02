@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Fix parent dir in main.sh",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
