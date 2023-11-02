@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.22",
+      "tag": "@figure-config/core_v0.0.22",
+      "date": "Thu, 02 Nov 2023 14:44:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add flag to set process.exit behaviour"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.21",
       "tag": "@figure-config/core_v0.0.21",
       "date": "Thu, 02 Nov 2023 13:54:18 GMT",

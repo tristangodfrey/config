@@ -1,6 +1,13 @@
 # Change Log - @figure-config/core
 
-This log was last generated on Thu, 02 Nov 2023 13:54:18 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 14:44:42 GMT and should not be manually modified.
+
+## 0.0.22
+Thu, 02 Nov 2023 14:44:42 GMT
+
+### Patches
+
+- Add flag to set process.exit behaviour
 
 ## 0.0.21
 Thu, 02 Nov 2023 13:54:18 GMT

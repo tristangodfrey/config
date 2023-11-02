@@ -1,6 +1,13 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Thu, 02 Nov 2023 13:54:18 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 14:44:42 GMT and should not be manually modified.
+
+## 0.0.28
+Thu, 02 Nov 2023 14:44:42 GMT
+
+### Patches
+
+- Add support for multiple environments when validating: `figure validate -e production,acceptance`
 
 ## 0.0.27
 Thu, 02 Nov 2023 13:54:18 GMT
