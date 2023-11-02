@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Add support for multiple environments when validating: `figure validate -e production,acceptance`",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}

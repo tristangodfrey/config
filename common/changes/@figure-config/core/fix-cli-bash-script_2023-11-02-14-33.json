@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/core",
+      "comment": "Add flag to set process.exit behaviour",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/core"
+}
