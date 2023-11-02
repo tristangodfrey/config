@@ -1,0 +1,1 @@
+{"version":3,"file":"figure.module.d.ts","sourceRoot":"","sources":["../src/figure.module.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,OAAO,IAAI,aAAa,EAAC,MAAM,qBAAqB,CAAA;AAE5D,OAAO,EAAC,aAAa,EAA2B,MAAM,gBAAgB,CAAC;AAEvE,eAAO,MAAM,MAAM,WAAW,CAAC;AAE/B,qBAEa,YAAY;IACrB,MAAM,CAAC,QAAQ,CAAC,OAAO,CAAC,EAAE,aAAa,GAAG,aAAa;CAiB1D"}

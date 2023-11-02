@@ -1,5 +1,9 @@
 # Todo
 
+- [ ]: Different schema/config locations
+
+
+
 - [x] [figure upload]: patch existing variable group
 - [x] [core]: Option to prompt for missing variables
 - [x] [core]: Integrate dotenv
