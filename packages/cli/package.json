@@ -22,15 +22,17 @@
 	"commander": "^11.0.0",
 	"json-schema-to-typescript": "^13.1.1",
 	"kubernetes-models": "^4.3.1",
-	"prompts": "^2.4.2",
-	"typescript": "^5.2.2"
+	"inquirer": "^8.2.6",
+	"typescript": "^5.2.2",
+	"find-up": "~4.1.0",
+	"winston": "^3.11.0"
   },
   "figure": {
 	"configFolderPath": "./config"
   },
   "devDependencies": {
 	"@types/node": "^20.8.2",
-	"@types/prompts": "^2.4.4",
+	"@types/inquirer": "^8.2.9",
 	"bun-types": "^1.0.2",
 	"@figure-config/core": "workspace:*"
   },

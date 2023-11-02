@@ -342,12 +342,12 @@
     },
     {
       "packageName": "@figure-config/core",
-      "projectFolder": "packages/config",
+      "projectFolder": "packages/core",
       "shouldPublish": true
     },
     {
       "packageName": "@figure-config/nest",
-      "projectFolder": "packages/nest-module",
+      "projectFolder": "packages/nest",
       "shouldPublish": true
     },
     {

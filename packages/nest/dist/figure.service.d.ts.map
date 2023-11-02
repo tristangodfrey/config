@@ -1,0 +1,1 @@
+{"version":3,"file":"figure.service.d.ts","sourceRoot":"","sources":["../src/figure.service.ts"],"names":[],"mappings":"AACA,OAAO,EAAU,OAAO,IAAI,aAAa,EAAE,MAAM,qBAAqB,CAAC;AAEvE,qBACa,aAAa;IACtB,OAAO,CAAC,MAAM,CAAM;IACpB,OAAO,CAAC,QAAQ,CAAC,MAAM,CAAkC;IAEnD,IAAI,CAAC,OAAO,CAAC,EAAE,aAAa;IASlC,SAAS;CAGZ"}

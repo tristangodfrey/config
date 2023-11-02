@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/core",
+      "comment": "Fix path handling",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/core"
+}
