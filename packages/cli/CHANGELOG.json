@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.30",
+      "tag": "@figure-config/cli_v0.0.30",
+      "date": "Thu, 02 Nov 2023 18:09:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix parent dir in main.sh"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.29",
       "tag": "@figure-config/cli_v0.0.29",
       "date": "Thu, 02 Nov 2023 17:06:19 GMT",
