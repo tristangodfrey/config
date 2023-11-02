@@ -56,6 +56,11 @@ export class Options {
     logErrors?: boolean = true;
 
     /**
+     * If true, process.exit(1) will be called if validation errors are encountered (after logging the errors)
+     */
+    exitOnError?: boolean = true;
+
+    /**
      * If set, figure will prompt for missing config values
      */
     prompt?: boolean = false;

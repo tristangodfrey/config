@@ -190,7 +190,10 @@ export const handleConfig = async <O extends Options>(
             result.errors
                 .map((e) => formatError(e, cn))
                 .forEach((e) => logger.error(e));
-            process.exit(1);
+
+            if (options.exitOnError) {
+                process.exit(1);
+            }
         }
     } else {
         throw new ValidationError(result.errors);

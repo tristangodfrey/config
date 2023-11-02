@@ -4,7 +4,7 @@ import { configMap, secret } from "./commands/kubernetes";
 import { upload } from "./commands/azure-devops";
 import * as fs from "node:fs";
 import { generateDeclarationFiles } from "./commands/generate";
-import { validate } from "./commands/validate";
+import { validateCommand } from "./commands/validate";
 import { figure } from "@figure-config/core";
 import { packagePath } from "./utils/fs.js";
 import { homedir } from "os";
@@ -73,7 +73,7 @@ program
     .description("Validate a configuration against a config schema")
     .argument("[appName]", "Application name")
     .addOption(OPTION_ENV)
-    .action(validate);
+    .action(validateCommand);
 
 const azure = program.command("azure").description("Azure DevOps resources");
 
