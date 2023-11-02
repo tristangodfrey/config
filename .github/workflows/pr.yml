@@ -14,21 +14,9 @@ jobs:
     if: github.event.pull_request.merged == true
 
     steps:
-      - name: Cache Rust toolchain
-        uses: actions/cache@v3
-        id: cache_rust
+      - uses: actions-rs/toolchain@v1
         with:
-          path: ~/.rustup
-          key: toolchain-${{ runner.os }}-${{ steps.rust_toolchain.outputs.rustc_hash }}
-
-      - if: ${{ steps.cache_rust.outputs.cache-hit != 'true' }}
-        name: Install Rust toolchain
-        uses: actions-rs/toolchain@v1
-        with:
-          profile: minimal
-          toolchain: ${{ matrix.rust-version }}
-#          override: true
-#          components: clippy, rustfmt
+          toolchain: stable
 
       # Cache Cargo Binaries
       - name: Cache Cargo Binaries
