@@ -1,6 +1,13 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Thu, 02 Nov 2023 14:44:42 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 17:01:50 GMT and should not be manually modified.
+
+## 0.0.29
+Thu, 02 Nov 2023 17:01:50 GMT
+
+### Patches
+
+- Retrieve parent directory relative to main.sh
 
 ## 0.0.28
 Thu, 02 Nov 2023 14:44:42 GMT

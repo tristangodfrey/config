@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.29",
+      "tag": "@figure-config/cli_v0.0.29",
+      "date": "Thu, 02 Nov 2023 17:01:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Retrieve parent directory relative to main.sh"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.28",
       "tag": "@figure-config/cli_v0.0.28",
       "date": "Thu, 02 Nov 2023 14:44:42 GMT",
