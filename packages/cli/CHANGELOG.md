@@ -1,6 +1,13 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Mon, 06 Nov 2023 09:48:36 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 21:32:19 GMT and should not be manually modified.
+
+## 0.0.32
+Mon, 06 Nov 2023 21:32:19 GMT
+
+### Patches
+
+- Fix bash script
 
 ## 0.0.31
 Mon, 06 Nov 2023 09:48:36 GMT
