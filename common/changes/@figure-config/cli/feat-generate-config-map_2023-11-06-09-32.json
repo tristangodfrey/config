@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Fix configmap + secret generation",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}

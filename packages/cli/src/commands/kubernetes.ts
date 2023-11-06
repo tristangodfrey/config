@@ -1,68 +1,96 @@
-import {EnvVar, EnvVarValue, figure, FigureInstance, getSchema} from "@figure-config/core";
-import {ConfigMap, Secret} from "kubernetes-models/v1";
+import {
+    EnvVar,
+    EnvVarValue,
+    figure,
+    FigureInstance,
+} from "@figure-config/core";
+import { ConfigMap, Secret } from "kubernetes-models/v1";
+import { logger } from "../utils/logger";
 
-const subAzure = (o: EnvVar[]) => o.reduce((o, curr) => ({...o, [curr.name]: `$(${curr.name})`}), {})
-const subValue = (o: EnvVarValue[]) => o.reduce((o, curr) => ({...o, [curr.name]: curr.value}), {})
+const subAzure = (o: EnvVar[]) =>
+    o.reduce((o, curr) => ({ ...o, [curr.name]: `$(${curr.name})` }), {});
+const subValue = (o: EnvVarValue[]) =>
+    o.reduce((o, curr) => ({ ...o, [curr.name]: curr.value }), {});
 
-const generateSecret = <T>(instance: FigureInstance<T>, mode: string) => {
+const generateSecret = <T>(
+    instance: FigureInstance<T>,
+    mode: string,
+    name: string,
+) => {
     const env = instance.env.getEnvVars();
 
-    console.debug(`Got env var values`);
-    console.debug(env);
+    const secrets = env.filter((e) => e.isSecret);
 
-    const secrets = env.filter(e => e.isSecret)
+    let kvPairs;
 
-    let kvPairs
-
-    if (mode === 'azure_variable') {
-        kvPairs = subAzure(secrets)
+    if (mode === "azure_variable") {
+        kvPairs = subAzure(secrets);
     }
 
-    if (mode === 'value') {
+    if (mode === "value") {
         //Get the values
         const values = instance.env.getEnvVarValues();
 
-        kvPairs = subValue(values.filter(v => v.isSecret));
+        kvPairs = subValue(values.filter((v) => v.isSecret));
     }
-    const secret = new Secret({data: kvPairs, metadata: {name: instance.options.subSchema as string}})
+    return new Secret({
+        data: kvPairs,
+        metadata: { name },
+    });
+};
 
-    return secret;
-}
+const generateConfigMap = <T>(
+    instance: FigureInstance<T>,
+    mode: string,
+    name: string,
+) => {
+    const envVars = instance.env.getEnvVars().filter((e) => !e.isSecret);
 
-const generateConfigMap = <T>(instance: FigureInstance<T>, mode: string) => {
-    const env = instance.env.getEnvVars()
+    let kvPairs;
 
-    const secrets = env.filter(e => !e.isSecret)
-
-    let kvPairs
-
-    if (mode === 'azure_variable') {
-        kvPairs = subAzure(secrets)
+    if (mode === "azure_variable") {
+        kvPairs = subAzure(envVars);
     }
 
-    if (mode === 'value') {
+    if (mode === "value") {
         //Get the values
-    }
-    const cm = new ConfigMap({data: kvPairs})
+        logger.debug("Getting values");
+        const values = instance.env.getEnvVarValues();
 
-    console.log(cm.toJSON());
-}
+        kvPairs = subValue(values.filter((v) => !v.isSecret));
+    }
+    return new ConfigMap({ data: kvPairs, metadata: { name } });
+};
+
+const initConfig = async (subSchema: string, env: string) => {
+    return await figure({
+        env: env,
+        subSchema: subSchema,
+        logger: logger,
+        exitOnError: false,
+        returnInstance: true,
+    });
+};
 
 export const configMap = async (subSchema: any, options: any) => {
+    const instance = await initConfig(subSchema, options.env);
 
-    const instance = await figure({
-        env: options.environment,
-        subSchema: subSchema
-    })
+    const cm = generateConfigMap(
+        instance,
+        options.valueSubstitution,
+        options.name ?? subSchema,
+    );
 
-    const schema = getSchema(instance.options.configFolderPath)
-    const cm = generateConfigMap(instance, options.valueSubstitution)
-}
-export const secret = async (appName: any, options: any) => {
-    const instance = await figure({
-        env: options.environment,
-        subSchema: appName
-    })
+    console.log(JSON.stringify(cm));
+};
+export const secret = async (subSchema: any, options: any) => {
+    const instance = await initConfig(subSchema, options.env);
 
-    const secret = generateSecret(instance, options.valueSubstitution)
-}
+    const secret = generateSecret(
+        instance,
+        options.valueSubstitution,
+        options.name ?? subSchema,
+    );
+
+    console.log(JSON.stringify(secret));
+};
