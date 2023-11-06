@@ -24,7 +24,7 @@ const OPTION_VS = new Option(
     "One of: [azure_variable, value]",
 )
     .choices(["azure_variable", "value"])
-    .default("azure_variable");
+    .default("value");
 const OPTION_ENV = new Option(
     "-e, --env <environment>",
     "Environment specific config file",
@@ -32,6 +32,10 @@ const OPTION_ENV = new Option(
 const OPTION_KUBE_NS = new Option(
     "-ns --namespace <namespace>",
     "Kubernetes namespace",
+);
+const OPTION_NAME = new Option(
+    "-n --name <name>",
+    "Name of the kubernetes resource",
 );
 
 //Commands
@@ -46,6 +50,7 @@ kubernetes
     .addOption(OPTION_ENV)
     .addOption(OPTION_KUBE_NS)
     .addOption(OPTION_VS)
+    .addOption(OPTION_NAME)
     .action(secret);
 
 kubernetes
@@ -53,6 +58,7 @@ kubernetes
     .argument("[subSchema]", "Application name")
     .addOption(OPTION_ENV)
     .addOption(OPTION_VS)
+    .addOption(OPTION_NAME)
     .action(configMap);
 
 program

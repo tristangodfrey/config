@@ -5,9 +5,36 @@
 CURRENT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
 PARENT_DIR=$(cd "$(dirname "$CURRENT_DIR")"; pwd -P )
 
-#If the last command was successful (exit status 0), use 'bun'
+EXTRA_NODE_ARGS=()
+OTHER_ARGS=()
+
+# idiomatic parameter and option handling in sh
+while test $# -gt 0
+do
+    case "$1" in
+        --debug)
+            EXTRA_NODE_ARGS+=(--inspect-brk)
+            ;;
+        *)
+            OTHER_ARGS+=("$1")
+            ;;
+    esac
+    shift
+done
+
+# If the last command was successful (exit status 0), use 'bun'
 if ! [ -x "$(command -v bun)" ]; then
-  node "$PARENT_DIR/dist/main.js" "$@"
+  # When calling node, only use EXTRA_NODE_ARGS if it's not empty
+  if [ ${#EXTRA_NODE_ARGS[@]} -eq 0 ]; then
+    node "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+  else
+    node "${EXTRA_NODE_ARGS[@]}" "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+  fi
 else
-  bun "$PARENT_DIR/src/main.ts" "$@"
+  # Uncomment the bun line and adjust accordingly if you want to use bun
+  if [ ${#EXTRA_NODE_ARGS[@]} -eq 0 ]; then
+    bun "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+  else
+    bun "${EXTRA_NODE_ARGS[@]}" "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+  fi
 fi
