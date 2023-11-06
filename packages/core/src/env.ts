@@ -1,14 +1,17 @@
 import { Schema } from "jsonschema";
-import { set, get } from "dot-prop";
+import { set } from "dot-prop";
 import jp from "jsonpath";
-import { ConfigNode, Path, getConfigNodesForEnv } from "./config-node";
-import { FigureData } from "./figure";
+import { getConfigNodesForEnv, Path } from "./config-node";
 
 export type EnvVar = { name: string; isSecret: boolean };
 export type EnvVarValue = { name: string; isSecret: boolean; value: any };
-export type EnvVarPath = { path: Path; value: any; isSecret: boolean };
+export type EnvVarNode = { path: Path; value: any; isSecret: boolean };
 
-export const envVarPaths = (schema: Schema): EnvVarPath[] => {
+/**
+ * Finds end nodes that have `env` defined and returns their path
+ * @param schema
+ */
+export const envVarPaths = (schema: Schema): EnvVarNode[] => {
     const nodes = jp.nodes(schema, "$..env");
 
     return nodes.map((r) => {
@@ -17,13 +20,17 @@ export const envVarPaths = (schema: Schema): EnvVarPath[] => {
         return {
             path: p,
             value: r.value,
-            isSecret: Boolean(
-                jp.query(schema, p.parent().jpPath())[0].isSecret,
-            ),
+            isSecret: Boolean(jp.query(schema, p.parent().jpPath())[0].secret),
         };
     });
 };
 
+/**
+ * Takes a configuration object and merges it with values from environment variables
+ *
+ * @param schema
+ * @param config
+ */
 export const substituteEnvVars = <T>(schema: Schema, config: T): T => {
     const paths = envVarPaths(schema);
 
@@ -52,19 +59,20 @@ export class FigureEnv<T> {
     getConfigNodesForEnv = () => getConfigNodesForEnv(this.schema, this.config);
 
     getEnvVars = (): EnvVar[] => {
-        const envVars: EnvVar[] = [];
-
         const paths = this.envVarPaths();
 
         return paths.map((p) => ({ name: p.value, isSecret: p.isSecret }));
     };
 
+    /**
+     * For each schema property that has `env` defined, return its value for the current configuration
+     */
     getEnvVarValues = (): EnvVarValue[] => {
         const paths = this.envVarPaths();
 
         return paths.map((p) => ({
             name: p.value,
-            value: jp.query(this.config, `$.${p.path}`)[0],
+            value: jp.query(this.config, p.path.toConfigPath().dotPath())[0],
             isSecret: p.isSecret,
         }));
     };
