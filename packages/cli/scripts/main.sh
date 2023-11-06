@@ -1,9 +1,5 @@
 #!/bin/bash
-
-# Check if 'bun' is available in the PATH
-
-CURRENT_DIR=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-PARENT_DIR=$(cd "$(dirname "$CURRENT_DIR")"; pwd -P )
+MAIN_PATH="$(npm config get prefix)/lib/node_modules/@figure-config/cli/dist/main.js"
 
 EXTRA_NODE_ARGS=()
 OTHER_ARGS=()
@@ -26,15 +22,15 @@ done
 if ! [ -x "$(command -v bun)" ]; then
   # When calling node, only use EXTRA_NODE_ARGS if it's not empty
   if [ ${#EXTRA_NODE_ARGS[@]} -eq 0 ]; then
-    node "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+    node "$MAIN_PATH" "${OTHER_ARGS[@]}"
   else
-    node "${EXTRA_NODE_ARGS[@]}" "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+    node "${EXTRA_NODE_ARGS[@]}" "$MAIN_PATH" "${OTHER_ARGS[@]}"
   fi
 else
   # Uncomment the bun line and adjust accordingly if you want to use bun
   if [ ${#EXTRA_NODE_ARGS[@]} -eq 0 ]; then
-    bun "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+    bun "$MAIN_PATH" "${OTHER_ARGS[@]}"
   else
-    bun "${EXTRA_NODE_ARGS[@]}" "$PARENT_DIR/dist/main.js" "${OTHER_ARGS[@]}"
+    bun "${EXTRA_NODE_ARGS[@]}" "$MAIN_PATH" "${OTHER_ARGS[@]}"
   fi
 fi
