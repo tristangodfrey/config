@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.31",
+      "tag": "@figure-config/cli_v0.0.31",
+      "date": "Mon, 06 Nov 2023 09:41:22 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix configmap + secret generation"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.30",
       "tag": "@figure-config/cli_v0.0.30",
       "date": "Thu, 02 Nov 2023 18:09:59 GMT",
