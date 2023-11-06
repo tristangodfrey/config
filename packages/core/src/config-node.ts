@@ -55,6 +55,8 @@ export const getConfigNodeForError = (
     if (!cn) {
         throw new Error(`Could not find ConfigNode for path: ${p}`);
     }
+
+    return cn;
 };
 
 export const getConfigNodesForEnv = (
