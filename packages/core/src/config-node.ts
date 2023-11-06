@@ -48,7 +48,13 @@ export const getConfigNodeForError = (
 ) => {
     const p = Path.fromValidationError(error);
 
-    return configNodes.find((cn) => cn.configPath.dotPath() === p.dotPath());
+    const cn = configNodes.find(
+        (cn) => cn.configPath.dotPath() === p.dotPath(),
+    );
+
+    if (!cn) {
+        throw new Error(`Could not find ConfigNode for path: ${p}`);
+    }
 };
 
 export const getConfigNodesForEnv = (
