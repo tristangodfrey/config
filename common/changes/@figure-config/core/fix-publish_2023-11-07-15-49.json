@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/core",
+      "comment": "Deep merge configs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/core"
+}

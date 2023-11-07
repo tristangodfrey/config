@@ -1,8 +1,7 @@
 import { describe, expect, it } from "@jest/globals";
 import { ValidationError } from "jsonschema";
 
-import { getConfigNodes, loadSchema, loadConfig, Path } from "../src";
-import path from "path";
+import { Path } from "../src";
 
 describe("Path", () => {
     // it("gets all config leaf nodes", () => {
