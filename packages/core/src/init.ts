@@ -104,6 +104,13 @@ export const init = async <O extends Options>(
     return handleConfig(processed, options, logger);
 };
 
+/**
+ * Stage 2 after processing options
+ *
+ * @param processed
+ * @param options
+ * @param logger
+ */
 export const handleConfig = async <O extends Options>(
     processed: FigureData<any>,
     options: O,
