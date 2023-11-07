@@ -1,6 +1,6 @@
 import { describe, expect, jest, test } from "@jest/globals";
 import { Options } from "./../src/options";
-import { figure, FigureData } from "../src";
+import { FigureData } from "../src";
 import { Schema } from "jsonschema";
 import { handleConfig } from "../src/init";
 
@@ -9,6 +9,7 @@ describe("Validation", () => {
         //@ts-ignore
         const exitSpy = jest
             .spyOn(process, "exit")
+            //@ts-ignore
             .mockImplementation((code) => {});
         const logger = {
             error: jest.fn(),

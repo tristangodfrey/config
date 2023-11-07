@@ -10,6 +10,7 @@ import { FigureData, FigureInstance, processSchema } from "./figure";
 import { ValidationError } from "./errors";
 import yaml from "js-yaml";
 import fs from "fs/promises";
+import merge from "deepmerge";
 
 export const init = async <O extends Options>(
     options: O,
@@ -80,10 +81,7 @@ export const init = async <O extends Options>(
         options.subSchema as string,
     );
 
-    const mergedConfig = {
-        ...defaultConfig,
-        ...envConfig,
-    };
+    const mergedConfig = merge(defaultConfig, envConfig);
 
     processed.config = options.subSchema
         ? (substituteEnvVars(processed.schema, mergedConfig)[
