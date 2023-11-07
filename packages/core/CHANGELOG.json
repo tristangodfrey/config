@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.24",
+      "tag": "@figure-config/core_v0.0.24",
+      "date": "Tue, 07 Nov 2023 15:52:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deep merge configs"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.23",
       "tag": "@figure-config/core_v0.0.23",
       "date": "Tue, 07 Nov 2023 12:41:36 GMT",
