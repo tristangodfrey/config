@@ -1,6 +1,13 @@
 # Change Log - @figure-config/core
 
-This log was last generated on Thu, 02 Nov 2023 14:44:42 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Nov 2023 12:41:36 GMT and should not be manually modified.
+
+## 0.0.23
+Tue, 07 Nov 2023 12:41:36 GMT
+
+### Patches
+
+- Misc fixes
 
 ## 0.0.22
 Thu, 02 Nov 2023 14:44:42 GMT
