@@ -1,7 +1,7 @@
 import * as path from "path";
 import { compile } from "json-schema-to-typescript";
 import * as fs from "fs/promises";
-import { getConfigPath, getPath, getSchema } from "@figure-config/core";
+import { getConfigPath, getPath, loadSchema } from "@figure-config/core";
 import { exists } from "find-up";
 
 const gen = async (p: string, schema: any, subSchema: string) => {
@@ -40,7 +40,7 @@ const generate = async (configFolderPath: string, subSchema: string) => {
 
     const p = path.join(modulePath, "/index.d.ts");
 
-    const schema = getSchema(getPath(configFolderPath, "schema"));
+    const schema = loadSchema(getPath(configFolderPath, "schema"));
 
     await gen(p, schema, subSchema);
 };

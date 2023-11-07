@@ -1,8 +1,8 @@
 import { Logger, MappedConfig, Options, ReturnType } from "./options";
-import { getConfigPath, getPath, getSchema, loadConfig } from "./fs";
+import { getConfigPath, getPath, loadSchema, loadConfig } from "./fs";
 import { substituteEnvVars } from "./env";
 import { validate } from "jsonschema";
-import { getConfigNodesForEnv, Path } from "./config-node";
+import { getConfigNodes, Path } from "./config-node";
 import inquirer, { QuestionCollection } from "inquirer";
 import { set } from "dot-prop";
 import { formatError } from "./validation";
@@ -44,9 +44,9 @@ export const init = async <O extends Options>(
     } else {
         if (options.schemaPath) {
             //Load schema
-            processed.schema = getSchema(options.schemaPath);
+            processed.schema = loadSchema(options.schemaPath);
         } else {
-            processed.schema = getSchema(
+            processed.schema = loadSchema(
                 getPath(options.configFolderPath, "schema"),
             );
         }
@@ -184,7 +184,7 @@ export const handleConfig = async <O extends Options>(
     }
 
     if (options.logErrors) {
-        const cn = getConfigNodesForEnv(processed.schema, processed.config);
+        const cn = getConfigNodes(processed.schema, processed.config);
 
         if (!result.valid) {
             result.errors

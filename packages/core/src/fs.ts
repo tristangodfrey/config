@@ -70,7 +70,7 @@ export const findConfigPathFromPackageJson = () => {
     return null; // Return null if .figrc is not found in any parent directory
 };
 
-export const getSchema = (schemaPath: string): Schema =>
+export const loadSchema = (schemaPath: string): Schema =>
     yaml.load(fs.readFileSync(schemaPath, "utf8")) as Schema;
 export const getPath = (configFolderPath: string, name: string) =>
     path.join(configFolderPath, `${name}.yaml`);

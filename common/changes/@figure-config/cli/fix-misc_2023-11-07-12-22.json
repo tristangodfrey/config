@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "",
+      "type": "none"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}

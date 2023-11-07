@@ -1,10 +1,17 @@
 import { describe, expect, it } from "@jest/globals";
 import { ValidationError } from "jsonschema";
 
-import jp from "jsonpath";
-import { Path } from "../src";
+import { getConfigNodes, loadSchema, loadConfig, Path } from "../src";
+import path from "path";
 
 describe("Path", () => {
+    // it("gets all config leaf nodes", () => {
+    //     const res = getConfigNodes(
+    //         loadSchema(path.join(__dirname, "../config")),
+    //         loadConfig(path.join(__dirname, "../config")),
+    //     );
+    // });
+
     it("should create a path from a validation error", () => {
         const err: ValidationError = {
             path: ["@core/api", "kerlink"],
