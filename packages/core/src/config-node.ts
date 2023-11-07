@@ -51,12 +51,9 @@ export const getConfigNodeForError = (
     return configNodes.find((cn) => cn.configPath.dotPath() === p.dotPath());
 };
 
-export const getConfigNodesForEnv = (
-    schema: Schema,
-    config: any,
-): ConfigNode[] => {
+export const getConfigNodes = (schema: Schema, config: any): ConfigNode[] => {
     // Iterate all schema end-nodes
-    const nodes = jp.nodes(schema, "$..env").map((n) => ({
+    const nodes = jp.nodes(schema, "$..*").map((n) => ({
         path: new Path(n.path.map((p) => p.toString().replace("\\", ""))),
         value: n.value,
     }));

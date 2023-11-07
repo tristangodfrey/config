@@ -1,7 +1,7 @@
 import { Schema } from "jsonschema";
 import { set } from "dot-prop";
 import jp from "jsonpath";
-import { getConfigNodesForEnv, Path } from "./config-node";
+import { getConfigNodes, Path } from "./config-node";
 
 export type EnvVar = { name: string; isSecret: boolean };
 export type EnvVarValue = { name: string; isSecret: boolean; value: any };
@@ -56,7 +56,7 @@ export class FigureEnv<T> {
 
     envVarPaths = () => envVarPaths(this.schema);
 
-    getConfigNodesForEnv = () => getConfigNodesForEnv(this.schema, this.config);
+    getConfigNodesForEnv = () => getConfigNodes(this.schema, this.config);
 
     getEnvVars = (): EnvVar[] => {
         const paths = this.envVarPaths();
