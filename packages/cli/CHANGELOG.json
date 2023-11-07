@@ -2,6 +2,21 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.34",
+      "tag": "@figure-config/cli_v0.0.34",
+      "date": "Tue, 07 Nov 2023 15:54:39 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.24`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.24`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.33",
       "tag": "@figure-config/cli_v0.0.33",
       "date": "Tue, 07 Nov 2023 12:41:36 GMT",
