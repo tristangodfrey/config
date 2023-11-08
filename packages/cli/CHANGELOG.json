@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.35",
+      "tag": "@figure-config/cli_v0.0.35",
+      "date": "Wed, 08 Nov 2023 14:28:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add option to specify output type for kubernetes resources (json,yaml)"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.34",
       "tag": "@figure-config/cli_v0.0.34",
       "date": "Tue, 07 Nov 2023 15:54:39 GMT",
