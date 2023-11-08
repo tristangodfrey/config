@@ -1,6 +1,13 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Tue, 07 Nov 2023 15:54:39 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2023 14:27:03 GMT and should not be manually modified.
+
+## 0.0.35
+Wed, 08 Nov 2023 14:27:03 GMT
+
+### Patches
+
+- Add option to specify output type for kubernetes resources (json,yaml)
 
 ## 0.0.34
 Tue, 07 Nov 2023 15:54:39 GMT
