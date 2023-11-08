@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "fix(cli): remove unused config",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
