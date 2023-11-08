@@ -6,6 +6,7 @@ import {
 } from "@figure-config/core";
 import { ConfigMap, Secret } from "kubernetes-models/v1";
 import { logger } from "../utils/logger";
+import YAML from "yaml";
 
 const subAzure = (o: EnvVar[]) =>
     o.reduce((o, curr) => ({ ...o, [curr.name]: `$(${curr.name})` }), {});
@@ -81,7 +82,13 @@ export const configMap = async (subSchema: any, options: any) => {
         options.name ?? subSchema,
     );
 
-    console.log(JSON.stringify(cm));
+    if (options.output === "json") {
+        console.log(JSON.stringify(cm));
+    }
+
+    if (options.output === "yaml") {
+        console.log(YAML.stringify(cm));
+    }
 };
 export const secret = async (subSchema: any, options: any) => {
     const instance = await initConfig(subSchema, options.env);

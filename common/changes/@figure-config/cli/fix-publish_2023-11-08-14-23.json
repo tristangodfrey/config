@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Add option to specify output type for kubernetes resources (json,yaml)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
