@@ -2,6 +2,21 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.36",
+      "tag": "@figure-config/cli_v0.0.36",
+      "date": "Wed, 08 Nov 2023 16:18:46 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(cli): remove unused config"
+          },
+          {
+            "comment": "Add shebang to main.js"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.35",
       "tag": "@figure-config/cli_v0.0.35",
       "date": "Wed, 08 Nov 2023 14:28:46 GMT",

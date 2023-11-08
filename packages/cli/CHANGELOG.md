@@ -1,6 +1,14 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Wed, 08 Nov 2023 14:28:46 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Nov 2023 16:18:46 GMT and should not be manually modified.
+
+## 0.0.36
+Wed, 08 Nov 2023 16:18:46 GMT
+
+### Patches
+
+- fix(cli): remove unused config
+- Add shebang to main.js
 
 ## 0.0.35
 Wed, 08 Nov 2023 14:28:46 GMT
