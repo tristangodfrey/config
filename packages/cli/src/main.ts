@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as path from "path";
 import { Option, program } from "commander";
 import { configMap, secret } from "./commands/kubernetes";

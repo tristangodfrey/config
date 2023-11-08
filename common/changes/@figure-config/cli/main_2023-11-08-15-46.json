@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Add shebang to main.js",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
