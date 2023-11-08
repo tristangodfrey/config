@@ -14,7 +14,7 @@
 	"config"
   ],
   "bin": {
-	"figure": "./scripts/main.sh"
+	"figure": "./dist/main.js"
   },
   "dependencies": {
 	"@openapitools/openapi-generator-cli": "^2.7.0",
@@ -25,7 +25,8 @@
 	"inquirer": "^8.2.6",
 	"typescript": "^5.2.2",
 	"find-up": "~4.1.0",
-	"winston": "^3.11.0"
+	"winston": "^3.11.0",
+	"yaml": "^2.3.4"
   },
   "figure": {
 	"configFolderPath": "./config"

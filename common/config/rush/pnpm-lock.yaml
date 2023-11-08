@@ -20,6 +20,7 @@ importers:
       kubernetes-models: ^4.3.1
       typescript: ^5.2.2
       winston: ^3.11.0
+      yaml: ^2.3.4
     dependencies:
       '@openapitools/openapi-generator-cli': 2.7.0
       axios: 1.5.1
@@ -30,6 +31,7 @@ importers:
       kubernetes-models: 4.3.1
       typescript: 5.2.2
       winston: 3.11.0
+      yaml: 2.3.4
     devDependencies:
       '@figure-config/core': link:../core
       '@types/inquirer': 8.2.9
@@ -3784,6 +3786,11 @@ packages:
 
   /yallist/4.0.0:
     resolution: {integrity: sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==}
+
+  /yaml/2.3.4:
+    resolution: {integrity: sha512-8aAvwVUSHpfEqTQ4w/KMlf3HcRdt50E5ODIQJBw1fQ5RL34xabzxtUlzTXVqc4rkZsPbvrXKWnABCD7kWSmocA==}
+    engines: {node: '>= 14'}
+    dev: false
 
   /yargs-parser/20.2.9:
     resolution: {integrity: sha512-y11nGElTIV+CT3Zv9t7VKl+Q3hTQoT9a1Qzezhhl6Rp21gJ/IVTW7Z3y9EWXhuUBC2Shnf+DX0antecpAwSP8w==}

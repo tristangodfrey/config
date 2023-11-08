@@ -37,6 +37,12 @@ const OPTION_NAME = new Option(
     "-n --name <name>",
     "Name of the kubernetes resource",
 );
+const OPTION_OUTPUT = new Option(
+    "-o --output <format>",
+    "Output format. One of: [yaml, json]",
+)
+    .choices(["yaml", "json"])
+    .default("json");
 
 //Commands
 
@@ -51,6 +57,7 @@ kubernetes
     .addOption(OPTION_KUBE_NS)
     .addOption(OPTION_VS)
     .addOption(OPTION_NAME)
+    .addOption(OPTION_OUTPUT)
     .action(secret);
 
 kubernetes
@@ -59,6 +66,7 @@ kubernetes
     .addOption(OPTION_ENV)
     .addOption(OPTION_VS)
     .addOption(OPTION_NAME)
+    .addOption(OPTION_OUTPUT)
     .action(configMap);
 
 program
