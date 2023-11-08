@@ -10,8 +10,6 @@ import { figure } from "@figure-config/core";
 import { packagePath } from "./utils/fs.js";
 import { homedir } from "os";
 
-let cliConfig: any;
-
 // Init
 const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(__dirname, "../package.json"), "utf8"),
@@ -117,14 +115,6 @@ program
     .action(generateDeclarationFiles);
 
 const run = async () => {
-    cliConfig = await figure({
-        schemaPath: path.join(await packagePath("config"), "schema.yaml"),
-        configFilePath: path.join(homedir(), ".figurerc"),
-        prompt: false,
-        returnInstance: true,
-        debug: false,
-    });
-
     program.parse(process.argv);
 };
 
