@@ -35,7 +35,7 @@ const generateSecret = <T>(
         kvPairs = subValue(values.filter((v) => v.isSecret));
     }
     return new Secret({
-        data: kvPairs,
+        stringData: kvPairs,
         metadata: { name },
     });
 };
