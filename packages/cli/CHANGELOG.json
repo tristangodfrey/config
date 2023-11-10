@@ -2,6 +2,18 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.37",
+      "tag": "@figure-config/cli_v0.0.37",
+      "date": "Fri, 10 Nov 2023 10:30:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use 'stringData' instead of 'data' in generated secret"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.36",
       "tag": "@figure-config/cli_v0.0.36",
       "date": "Wed, 08 Nov 2023 16:20:15 GMT",

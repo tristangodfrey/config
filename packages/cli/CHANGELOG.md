@@ -1,6 +1,13 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Wed, 08 Nov 2023 16:20:15 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 10:30:02 GMT and should not be manually modified.
+
+## 0.0.37
+Fri, 10 Nov 2023 10:30:02 GMT
+
+### Patches
+
+- Use 'stringData' instead of 'data' in generated secret
 
 ## 0.0.36
 Wed, 08 Nov 2023 16:20:15 GMT

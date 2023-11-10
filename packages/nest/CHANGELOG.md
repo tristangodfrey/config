@@ -1,6 +1,11 @@
 # Change Log - @figure-config/nest
 
-This log was last generated on Wed, 08 Nov 2023 16:20:15 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 10:30:02 GMT and should not be manually modified.
+
+## 0.0.30
+Fri, 10 Nov 2023 10:30:02 GMT
+
+_Version update only_
 
 ## 0.0.29
 Wed, 08 Nov 2023 16:20:15 GMT
