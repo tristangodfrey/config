@@ -1,6 +1,13 @@
 # Change Log - @figure-config/core
 
-This log was last generated on Tue, 07 Nov 2023 15:54:39 GMT and should not be manually modified.
+This log was last generated on Sun, 12 Nov 2023 17:36:34 GMT and should not be manually modified.
+
+## 0.0.25
+Sun, 12 Nov 2023 17:36:34 GMT
+
+### Patches
+
+- Pure ESM
 
 ## 0.0.24
 Tue, 07 Nov 2023 15:54:39 GMT
