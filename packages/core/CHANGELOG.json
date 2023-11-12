@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.25",
+      "tag": "@figure-config/core_v0.0.25",
+      "date": "Sun, 12 Nov 2023 17:36:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pure ESM"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.24",
       "tag": "@figure-config/core_v0.0.24",
       "date": "Tue, 07 Nov 2023 15:54:39 GMT",
