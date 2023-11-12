@@ -2,6 +2,26 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.38",
+      "tag": "@figure-config/cli_v0.0.38",
+      "date": "Sun, 12 Nov 2023 17:32:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Pure ESM"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.25`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.25`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.37",
       "tag": "@figure-config/cli_v0.0.37",
       "date": "Fri, 10 Nov 2023 10:30:02 GMT",
