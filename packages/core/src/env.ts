@@ -1,7 +1,7 @@
 import { Schema } from "jsonschema";
-import { set } from "dot-prop";
+import { setProperty } from "dot-prop";
 import jp from "jsonpath";
-import { getConfigNodes, Path } from "./config-node";
+import { getConfigNodes, Path } from "./config-node.js";
 
 export type EnvVar = { name: string; isSecret: boolean };
 export type EnvVarValue = { name: string; isSecret: boolean; value: any };
@@ -41,7 +41,7 @@ export const substituteEnvVars = <T>(schema: Schema, config: T): T => {
         }))
         .forEach((p) =>
             process.env[p.value]
-                ? set(config, p.path, process.env[p.value])
+                ? setProperty(config, p.path, process.env[p.value])
                 : null,
         );
 

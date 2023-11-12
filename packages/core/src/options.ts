@@ -1,5 +1,5 @@
 import { Schema } from "jsonschema";
-import { FigureInstance } from "./figure";
+import { FigureInstance } from "./figure.js";
 import { Config } from "@figure-config/types";
 
 export type ReturnType<O extends Options> = O["returnInstance"] extends true

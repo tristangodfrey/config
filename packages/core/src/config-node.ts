@@ -1,6 +1,6 @@
 import jp from "jsonpath";
 import { Schema, ValidationError } from "jsonschema";
-import { get } from "dot-prop";
+import { getProperty } from "dot-prop";
 
 export class Path {
     constructor(private p: jp.PathComponent[]) {}
@@ -59,9 +59,11 @@ export const getConfigNodes = (schema: Schema, config: any): ConfigNode[] => {
     }));
 
     return nodes.map((n) => {
+        console.log(n.path.toConfigPath().dotPath());
+
         const cn: ConfigNode = {
             configPath: n.path.toConfigPath(),
-            configValue: get(config, n.path.toConfigPath().dotPath()),
+            configValue: jp.value(config, n.path.toConfigPath().jpPath()),
             envVarName: n.value,
             schemaPath: n.path,
             isSecret: Boolean(

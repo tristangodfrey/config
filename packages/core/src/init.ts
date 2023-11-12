@@ -1,13 +1,13 @@
-import { Logger, MappedConfig, Options, ReturnType } from "./options";
-import { getConfigPath, getPath, loadSchema, loadConfig } from "./fs";
-import { substituteEnvVars } from "./env";
+import { Logger, MappedConfig, Options, ReturnType } from "./options.js";
+import { getConfigPath, getPath, loadSchema, loadConfig } from "./fs.js";
+import { substituteEnvVars } from "./env.js";
 import { validate } from "jsonschema";
-import { getConfigNodes, Path } from "./config-node";
+import { getConfigNodes, Path } from "./config-node.js";
 import inquirer, { QuestionCollection } from "inquirer";
-import { set } from "dot-prop";
-import { formatError } from "./validation";
-import { FigureData, FigureInstance, processSchema } from "./figure";
-import { ValidationError } from "./errors";
+import { setProperty } from "dot-prop";
+import { formatError } from "./validation.js";
+import { FigureData, FigureInstance, processSchema } from "./figure.js";
+import { ValidationError } from "./errors.js";
 import yaml from "js-yaml";
 import fs from "fs/promises";
 import merge from "deepmerge";
@@ -137,7 +137,7 @@ export const handleConfig = async <O extends Options>(
 
         paths.forEach((p) => {
             const answer = answers[p.dotPath()];
-            set(processed.config, p.dotPath(), answer);
+            setProperty(processed.config, p.jpPath(), answer);
         });
 
         //Re-validate

@@ -1,17 +1,13 @@
 import { default as pino } from "pino";
-import { Options, ReturnType } from "./options";
-import { init } from "./init";
+import { Options, ReturnType } from "./options.js";
+import { init } from "./init.js";
 import { config } from "dotenv";
 
-export * from "./figure";
-export * from "./fs";
-export * from "./options";
-export * from "./env";
-export * from "./config-node";
-
-//Find top-level package first
-
-//
+export * from "./figure.js";
+export * from "./fs.js";
+export * from "./options.js";
+export * from "./env.js";
+export * from "./config-node.js";
 
 export const figure = async <O extends Options = Options>(
     options?: O,
