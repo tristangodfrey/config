@@ -1,18 +1,23 @@
 #!/usr/bin/env node
 import * as path from "path";
 import { Option, program } from "commander";
-import { configMap, secret } from "./commands/kubernetes";
-import { upload } from "./commands/azure-devops";
+import { configMap, secret } from "./commands/kubernetes.js";
+import { upload } from "./commands/azure-devops.js";
 import * as fs from "node:fs";
-import { generateDeclarationFiles } from "./commands/generate";
-import { validateCommand } from "./commands/validate";
+import { generateDeclarationFiles } from "./commands/generate.js";
+import { validateCommand } from "./commands/validate.js";
+import { fileURLToPath } from "node:url";
 import { figure } from "@figure-config/core";
-import { packagePath } from "./utils/fs.js";
-import { homedir } from "os";
 
 // Init
 const packageJson = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, "../package.json"), "utf8"),
+    fs.readFileSync(
+        path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            "../package.json",
+        ),
+        "utf8",
+    ),
 );
 program.version(packageJson.version).name("figure");
 

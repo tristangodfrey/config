@@ -10,7 +10,7 @@ importers:
       '@figure-config/core': workspace:*
       '@openapitools/openapi-generator-cli': ^2.7.0
       '@types/inquirer': ^8.2.9
-      '@types/node': ^20.8.2
+      '@types/node': ^20.6.3
       axios: ^1.5.0
       bun-types: ^1.0.2
       commander: ^11.0.0
@@ -47,9 +47,9 @@ importers:
       '@types/js-yaml': ^4.0.6
       '@types/jsonpath': ^0.2.1
       '@types/node': ^20.6.3
-      bun-types: ^1.0.2
+      bun-types: ^1.0.11
       deepmerge: ^4.3.1
-      dot-prop: ^6.0.1
+      dot-prop: ^8.0.2
       dotenv: ^16.3.1
       inquirer: ^8.2.6
       js-yaml: ^4.1.0
@@ -63,7 +63,7 @@ importers:
       typescript: ^5.2.2
     dependencies:
       deepmerge: 4.3.1
-      dot-prop: 6.0.1
+      dot-prop: 8.0.2
       dotenv: 16.3.1
       inquirer: 8.2.6
       js-yaml: 4.1.0
@@ -82,7 +82,7 @@ importers:
       '@types/js-yaml': 4.0.6
       '@types/jsonpath': 0.2.1
       '@types/node': 20.8.2
-      bun-types: 1.0.4
+      bun-types: 1.0.11
       typescript: 5.2.2
 
   ../../packages/nest:
@@ -1208,6 +1208,10 @@ packages:
       ieee754: 1.2.1
     dev: false
 
+  /bun-types/1.0.11:
+    resolution: {integrity: sha512-XaDwjnBlkdTOtBEAcXhDnPSKFMlwFK/526z0iyairYIDhZJMzZM1QU4D7XRiEI2SpKQWexn0S/LN9Mwx5xSJNg==}
+    dev: true
+
   /bun-types/1.0.4:
     resolution: {integrity: sha512-MIXp8MXPqzjjDrBs2fNzODFgFB+Mkl/OdTsPjYaefRoBt+Bk8VEJc3S1bbs6pvBi/wCpPf/ZSmzfIyZ5w4gAMg==}
     dev: true
@@ -1564,11 +1568,11 @@ packages:
     resolution: {integrity: sha512-c68LpLbO+7kP/b1Hr1qs8/BJ09F5khZGTxqxZuhzxpmwJKOgRFHJWIb9/KmqnqHhLdO55aOxFH/EGBvUQbL/RQ==}
     dev: false
 
-  /dot-prop/6.0.1:
-    resolution: {integrity: sha512-tE7ztYzXHIeyvc7N+hR3oi7FIbf/NIjVP9hmAt3yMXzrQ072/fpjGLx2GxNxGxUl5V73MEqYzioOMoVhGMJ5cA==}
-    engines: {node: '>=10'}
+  /dot-prop/8.0.2:
+    resolution: {integrity: sha512-xaBe6ZT4DHPkg0k4Ytbvn5xoxgpG0jOS1dYxSOwAHPuNLjP3/OzN0gH55SrLqpx8cBfSaVt91lXYkApjb+nYdQ==}
+    engines: {node: '>=16'}
     dependencies:
-      is-obj: 2.0.0
+      type-fest: 3.13.1
     dev: false
 
   /dotenv/16.3.1:
@@ -2209,11 +2213,6 @@ packages:
     resolution: {integrity: sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==}
     engines: {node: '>=0.12.0'}
     dev: true
-
-  /is-obj/2.0.0:
-    resolution: {integrity: sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==}
-    engines: {node: '>=8'}
-    dev: false
 
   /is-object/1.0.2:
     resolution: {integrity: sha512-2rRIahhZr2UWb45fIOuvZGpFtz0TyOZLf32KxBbSoUCeZR495zCKlWUKKUByk3geS2eAs7ZAABt0Y/Rx0GiQGA==}
@@ -3589,6 +3588,11 @@ packages:
   /type-fest/0.21.3:
     resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
     engines: {node: '>=10'}
+    dev: false
+
+  /type-fest/3.13.1:
+    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /type/1.2.0:

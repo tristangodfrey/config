@@ -1,5 +1,5 @@
 import { figure } from "@figure-config/core";
-import { logger } from "../utils/logger";
+import { logger } from "../utils/logger.js";
 
 const validate = async (appName: any, env: string): Promise<boolean> => {
     console.log(`validating: ${env}`);

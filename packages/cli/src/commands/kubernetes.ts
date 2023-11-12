@@ -5,7 +5,7 @@ import {
     FigureInstance,
 } from "@figure-config/core";
 import { ConfigMap, Secret } from "kubernetes-models/v1";
-import { logger } from "../utils/logger";
+import { logger } from "../utils/logger.js";
 import YAML from "yaml";
 
 const subAzure = (o: EnvVar[]) =>

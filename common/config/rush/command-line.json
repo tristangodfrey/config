@@ -12,12 +12,16 @@
    */
   "commands": [
     {
-      "commandKind": "bulk",
       "name": "build:watch",
-      "summary": "Build applications",
-      "shellCommand": "pnpm run --if-present build",
-      "enableParallelism": true,
+
+      "commandKind": "bulk",
+      "summary": "Build projects and watch for changes",
+      "description": "For details, see the article \"Using watch mode\" on the Rush website: https://rushjs.io/",
+
+      // use incremental build logic (important)
       "incremental": true,
+      "enableParallelism": true,
+      // Enable "watch mode"
       "watchForChanges": true,
       "ignoreMissingScript": true
     },

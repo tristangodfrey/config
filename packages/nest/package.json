@@ -1,7 +1,7 @@
 {
   "name": "@figure-config/nest",
   "version": "0.0.30",
-  "module": "index.ts",
+  "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "devDependencies": {
@@ -16,7 +16,7 @@
   },
   "scripts": {
 	"build": "tsc",
-	"build:watch": "tsc -w",
+	"build:watch": "tsc",
 	"test": "bun test"
   },
   "figure": {

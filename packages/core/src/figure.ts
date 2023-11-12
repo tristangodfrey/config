@@ -1,7 +1,7 @@
 import { Schema, ValidatorResult } from "jsonschema";
 import JsonRefs from "json-refs";
-import { FigureEnv } from "./env";
-import { MappedConfig, Options } from "./options";
+import { FigureEnv } from "./env.js";
+import { MappedConfig, Options } from "./options.js";
 
 export const processSchema = async (schema: Schema, subSchema?: string) => {
     const resolved = (await JsonRefs.resolveRefs(schema)).resolved as Schema;
