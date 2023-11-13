@@ -34,4 +34,22 @@ describe("Path", () => {
 
         expect(path.dotPath()).toBe('$["@core/api"].kerlink.basePath');
     });
+
+    it("should do it again", () => {
+        const err: ValidationError = {
+            path: ["splunk", "disable"],
+            property: "instance.splunk.disable",
+            message: "is not of a type(s) boolean",
+            //@ts-ignore
+            schema: { type: "boolean", env: "DISABLE_SPLUNK" },
+            instance: "true",
+            name: "type",
+            argument: ["boolean"],
+            stack: "instance.splunk.disable is not of a type(s) boolean",
+        };
+
+        const path = Path.fromValidationError(err);
+
+        expect(path.dotPath()).toBe("splunk.disable");
+    });
 });
