@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Pure ESM",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
