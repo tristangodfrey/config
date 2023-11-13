@@ -7,12 +7,6 @@ export const formatError = (
 ) => {
     const cn = getConfigNodeForError(error, configNodes);
 
-    if (!cn) {
-        console.log("CN not found");
-        console.log(error);
-        // console.log(configNodes);
-    }
-
     if (error.name === "required") {
         if (error.path.length !== 0) {
             return `Missing value for: ${cn.configPath.dotPath()} [env: ${cn?.envVarName}]`;

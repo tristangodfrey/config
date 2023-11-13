@@ -52,11 +52,7 @@ export const getConfigNodeForError = (
 ) => {
     const p = Path.fromValidationError(error);
 
-    return configNodes.find((cn) => {
-        console.log(`${cn.configPath.dotPath()} === ${p.dotPath()}`);
-
-        return cn.configPath.jpPath() === p.jpPath();
-    });
+    return configNodes.find((cn) => cn.configPath.jpPath() === p.jpPath());
 };
 
 export const getConfigNodes = (schema: Schema, config: any): ConfigNode[] => {
