@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.26",
+      "tag": "@figure-config/core_v0.0.26",
+      "date": "Mon, 13 Nov 2023 15:03:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix validation, revert to commonjs"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.24",
       "tag": "@figure-config/core_v0.0.24",
       "date": "Tue, 07 Nov 2023 15:54:39 GMT",
