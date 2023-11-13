@@ -6,9 +6,13 @@ export class Path {
     constructor(private p: jp.PathComponent[]) {}
 
     static fromValidationError(error: ValidationError): Path {
-        const s = `${error.path.join(".")}.${error.argument}`;
+        if (typeof error.schema !== "string") {
+            if (error.schema.type === "object") {
+                return new Path([...error.path, error.argument]);
+            }
+        }
 
-        return new Path([...error.path, error.argument]);
+        return new Path(error.path);
     }
 
     parent() {
@@ -48,7 +52,11 @@ export const getConfigNodeForError = (
 ) => {
     const p = Path.fromValidationError(error);
 
-    return configNodes.find((cn) => cn.configPath.dotPath() === p.dotPath());
+    return configNodes.find((cn) => {
+        console.log(`${cn.configPath.dotPath()} === ${p.dotPath()}`);
+
+        return cn.configPath.jpPath() === p.jpPath();
+    });
 };
 
 export const getConfigNodes = (schema: Schema, config: any): ConfigNode[] => {
