@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Fix validation, revert to commonjs",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}
