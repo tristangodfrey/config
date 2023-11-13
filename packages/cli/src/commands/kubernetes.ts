@@ -5,7 +5,7 @@ import {
     FigureInstance,
 } from "@figure-config/core";
 import { ConfigMap, Secret } from "kubernetes-models/v1";
-import { logger } from "../utils/logger.js";
+import { logger } from "../utils/logger";
 import YAML from "yaml";
 
 const subAzure = (o: EnvVar[]) =>
@@ -13,27 +13,43 @@ const subAzure = (o: EnvVar[]) =>
 const subValue = (o: EnvVarValue[]) =>
     o.reduce((o, curr) => ({ ...o, [curr.name]: curr.value }), {});
 
+const getData = <T>(
+    instance: FigureInstance<T>,
+    mode: string,
+    secret: boolean,
+) => {
+    const env = instance.env.getEnvVars();
+
+    const values = env.filter((e) => e.secret === secret);
+
+    let kvPairs;
+
+    if (mode === "azure_variable") {
+        kvPairs = subAzure(values);
+    }
+
+    if (mode === "value") {
+        //Get the values
+        const values = instance.env
+            .getEnvVarValues()
+            // .filter((v) => {
+            //     console.log(v);
+            //     return v.isSecret === secret;
+            // })
+            .map((v) => ({ ...v, value: v.value?.toString() }));
+
+        kvPairs = subValue(values);
+    }
+    return kvPairs;
+};
+
 const generateSecret = <T>(
     instance: FigureInstance<T>,
     mode: string,
     name: string,
 ) => {
-    const env = instance.env.getEnvVars();
+    const kvPairs = getData(instance, mode, true);
 
-    const secrets = env.filter((e) => e.isSecret);
-
-    let kvPairs;
-
-    if (mode === "azure_variable") {
-        kvPairs = subAzure(secrets);
-    }
-
-    if (mode === "value") {
-        //Get the values
-        const values = instance.env.getEnvVarValues();
-
-        kvPairs = subValue(values.filter((v) => v.isSecret));
-    }
     return new Secret({
         stringData: kvPairs,
         metadata: { name },
@@ -45,21 +61,7 @@ const generateConfigMap = <T>(
     mode: string,
     name: string,
 ) => {
-    const envVars = instance.env.getEnvVars().filter((e) => !e.isSecret);
-
-    let kvPairs;
-
-    if (mode === "azure_variable") {
-        kvPairs = subAzure(envVars);
-    }
-
-    if (mode === "value") {
-        //Get the values
-        logger.debug("Getting values");
-        const values = instance.env.getEnvVarValues();
-
-        kvPairs = subValue(values.filter((v) => !v.isSecret));
-    }
+    const kvPairs = getData(instance, mode, false);
     return new ConfigMap({ data: kvPairs, metadata: { name } });
 };
 

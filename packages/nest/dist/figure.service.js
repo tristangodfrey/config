@@ -1,3 +1,4 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -5,25 +6,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var FigureService_1;
-import { Injectable, Logger } from "@nestjs/common";
-import { figure } from "@figure-config/core";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FigureService = void 0;
+const common_1 = require("@nestjs/common");
+const core_1 = require("@figure-config/core");
 let FigureService = FigureService_1 = class FigureService {
-    config;
-    logger = new Logger(FigureService_1.name);
+    constructor() {
+        this.logger = new common_1.Logger(FigureService_1.name);
+    }
     async init(options) {
         if (!this.config) {
-            this.config = await figure({
-                ...options,
-                logger: this.logger,
-            });
+            this.config = await (0, core_1.figure)(Object.assign(Object.assign({}, options), { logger: this.logger }));
         }
     }
     getConfig() {
         return this.config;
     }
 };
-FigureService = FigureService_1 = __decorate([
-    Injectable()
+exports.FigureService = FigureService;
+exports.FigureService = FigureService = FigureService_1 = __decorate([
+    (0, common_1.Injectable)()
 ], FigureService);
-export { FigureService };
 //# sourceMappingURL=figure.service.js.map

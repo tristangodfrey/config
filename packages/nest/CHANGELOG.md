@@ -1,13 +1,6 @@
 # Change Log - @figure-config/nest
 
-This log was last generated on Sun, 12 Nov 2023 17:36:34 GMT and should not be manually modified.
-
-## 0.0.31
-Sun, 12 Nov 2023 17:36:34 GMT
-
-### Patches
-
-- Pure ESM
+This log was last generated on Fri, 10 Nov 2023 10:30:02 GMT and should not be manually modified.
 
 ## 0.0.30
 Fri, 10 Nov 2023 10:30:02 GMT

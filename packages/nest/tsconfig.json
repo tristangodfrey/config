@@ -1,8 +1,23 @@
 {
-  "extends": "../../common/config/tsconfig.base.json",
-  "exclude": ["tests", "dist"],
   "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2017",
+    "module": "CommonJS",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
     "outDir": "dist",
-    "rootDir": "src"
-  }
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true
+  },
+  "types": [
+    "node",
+    "jest"
+  ],
+  "exclude": ["tests", "dist"]
 }

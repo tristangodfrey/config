@@ -2,29 +2,6 @@
   "name": "@figure-config/nest",
   "entries": [
     {
-      "version": "0.0.31",
-      "tag": "@figure-config/nest_v0.0.31",
-      "date": "Sun, 12 Nov 2023 17:36:34 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Pure ESM"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@figure-config/cli\" to `0.0.38`"
-          },
-          {
-            "comment": "Updating dependency \"@figure-config/core\" to `0.0.25`"
-          },
-          {
-            "comment": "Updating dependency \"@figure-config/core\" to `0.0.25`"
-          }
-        ]
-      }
-    },
-    {
       "version": "0.0.30",
       "tag": "@figure-config/nest_v0.0.30",
       "date": "Fri, 10 Nov 2023 10:30:02 GMT",
