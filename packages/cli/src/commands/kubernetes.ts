@@ -93,7 +93,9 @@ const logOutput = (format: string, value: object) => {
     }
 
     if (format === "yaml") {
-        console.log(YAML.stringify(value));
+        console.log(
+            YAML.stringify(value, { defaultStringType: "QUOTE_DOUBLE" }),
+        );
     }
 };
 
