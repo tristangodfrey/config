@@ -1,5 +1,5 @@
 import { ValidationError } from "jsonschema";
-import { ConfigNode, getConfigNodeForError } from "./config-node.js";
+import { ConfigNode, getConfigNodeForError } from "./config-node";
 
 export const formatError = (
     error: ValidationError,
