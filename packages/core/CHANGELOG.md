@@ -1,6 +1,13 @@
 # Change Log - @figure-config/core
 
-This log was last generated on Tue, 07 Nov 2023 15:54:39 GMT and should not be manually modified.
+This log was last generated on Mon, 13 Nov 2023 15:07:00 GMT and should not be manually modified.
+
+## 0.0.26
+Mon, 13 Nov 2023 15:07:00 GMT
+
+### Patches
+
+- Fix validation, revert to commonjs
 
 ## 0.0.24
 Tue, 07 Nov 2023 15:54:39 GMT
