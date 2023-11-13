@@ -84,14 +84,19 @@ export const configMap = async (subSchema: any, options: any) => {
         options.name ?? subSchema,
     );
 
-    if (options.output === "json") {
-        console.log(JSON.stringify(cm));
+    logOutput(options.output, cm);
+};
+
+const logOutput = (format: string, value: object) => {
+    if (format === "json") {
+        console.log(JSON.stringify(value));
     }
 
-    if (options.output === "yaml") {
-        console.log(YAML.stringify(cm));
+    if (format === "yaml") {
+        console.log(YAML.stringify(value));
     }
 };
+
 export const secret = async (subSchema: any, options: any) => {
     const instance = await initConfig(subSchema, options.env);
 
@@ -101,5 +106,5 @@ export const secret = async (subSchema: any, options: any) => {
         options.name ?? subSchema,
     );
 
-    console.log(JSON.stringify(secret));
+    logOutput(options.output, secret);
 };
