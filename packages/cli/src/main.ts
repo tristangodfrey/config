@@ -43,6 +43,11 @@ const OPTION_OUTPUT = new Option(
     .choices(["yaml", "json"])
     .default("json");
 
+const OPTION_ADD_NODE_ENV = new Option(
+    "--add-node-env",
+    "Add a NODE_ENV variable to the configmap, uses the environment specified in -e",
+);
+
 //Commands
 
 const kubernetes = program
@@ -66,6 +71,7 @@ kubernetes
     .addOption(OPTION_VS)
     .addOption(OPTION_NAME)
     .addOption(OPTION_OUTPUT)
+    .addOption(OPTION_ADD_NODE_ENV)
     .action(configMap);
 
 program

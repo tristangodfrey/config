@@ -84,9 +84,11 @@ export const init = async <O extends Options>(
     const mergedConfig = merge(defaultConfig, envConfig);
 
     processed.config = options.subSchema
-        ? (substituteEnvVars(processed.schema, mergedConfig)[
-              options.subSchema
-          ] as MappedConfig<O>)
+        ? (substituteEnvVars(
+              processed.schema,
+              mergedConfig,
+              options.subSchema as string,
+          )[options.subSchema] as MappedConfig<O>)
         : (substituteEnvVars(
               processed.schema,
               mergedConfig,

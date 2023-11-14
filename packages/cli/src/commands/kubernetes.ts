@@ -84,6 +84,10 @@ export const configMap = async (subSchema: any, options: any) => {
         options.name ?? subSchema,
     );
 
+    if (options.addNodeEnv) {
+        cm.data["NODE_ENV"] = options.env;
+    }
+
     logOutput(options.output, cm);
 };
 
