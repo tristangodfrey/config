@@ -1,6 +1,6 @@
 {
   "name": "@figure-config/nest",
-  "version": "0.0.33",
+  "version": "0.0.34",
   "module": "index.ts",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
