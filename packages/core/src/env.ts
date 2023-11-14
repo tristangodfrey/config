@@ -16,7 +16,10 @@ export type EnvVarNode = {
  * Finds end nodes that have `env` defined and returns their path
  * @param schema
  */
-export const envVarPaths = (schema: Schema): EnvVarNode[] => {
+export const envVarPaths = (
+    schema: Schema,
+    subSchema?: string,
+): EnvVarNode[] => {
     const nodes = jp.nodes(schema, "$..env");
 
     return nodes.map((r) => {
@@ -36,9 +39,14 @@ export const envVarPaths = (schema: Schema): EnvVarNode[] => {
  *
  * @param schema
  * @param config
+ * @param subSchema
  */
-export const substituteEnvVars = <T>(schema: Schema, config: T): T => {
-    const paths = envVarPaths(schema);
+export const substituteEnvVars = <T>(
+    schema: Schema,
+    config: T,
+    subSchema?: string,
+): T => {
+    const paths = envVarPaths(schema, subSchema);
 
     paths.forEach((p) => {
         let value = process.env[p.value];
@@ -49,9 +57,13 @@ export const substituteEnvVars = <T>(schema: Schema, config: T): T => {
             }
         }
 
-        return process.env[p.value]
-            ? set(config, p.path.toConfigPath().dotPath(), value)
-            : null;
+        console.debug(`${p.path.toConfigPath().dotPath()}: ${value}`);
+
+        const path = subSchema
+            ? `${subSchema}.${p.path.toConfigPath().dotPath()}`
+            : p.path.toConfigPath().dotPath();
+
+        return process.env[p.value] ? set(config, path, value) : null;
     });
 
     return config;
