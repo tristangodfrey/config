@@ -30,6 +30,28 @@
       "incremental": true,
       "ignoreMissingScript": true
     },
+    {
+      "name": "prettier",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. This command invokes Prettier to reformat staged changes.",
+      "safeForSimultaneousRushProcesses": true,
+
+      "autoinstallerName": "rush-prettier",
+
+      // This will invoke common/autoinstallers/rush-prettier/node_modules/.bin/pretty-quick
+      "shellCommand": "pretty-quick --staged"
+    },
+    {
+      "name": "eslint",
+      "commandKind": "global",
+      "summary": "Used by the pre-commit Git hook. This command invokes ESLint to reformat staged changes.",
+      "safeForSimultaneousRushProcesses": true,
+
+      "autoinstallerName": "rush-eslint",
+
+      // This will invoke common/autoinstallers/rush-prettier/node_modules/.bin/eslint
+      "shellCommand": "eslint -c 'common/autoinstallers/rush-eslint/.eslintrc' 'packages/**/*.ts'"
+    }
     // {
     //   /**
     //    * (Required) Determines the type of custom command.

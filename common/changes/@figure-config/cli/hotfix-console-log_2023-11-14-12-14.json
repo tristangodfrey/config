@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/cli",
+      "comment": "Remove faulty log",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/cli"
+}

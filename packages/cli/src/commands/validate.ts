@@ -2,6 +2,7 @@ import { figure } from "@figure-config/core";
 import { logger } from "../utils/logger";
 
 const validate = async (appName: any, env: string): Promise<boolean> => {
+    //eslint-disable-next-line
     console.log(`validating: ${env}`);
 
     const config = await figure({
@@ -15,8 +16,10 @@ const validate = async (appName: any, env: string): Promise<boolean> => {
     });
 
     if (config.validatorResult.valid) {
+        //eslint-disable-next-line
         console.log(`${env}: valid`);
     } else {
+        //eslint-disable-next-line
         console.log(`${env}: invalid`);
     }
 
