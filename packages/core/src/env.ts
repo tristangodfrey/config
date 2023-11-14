@@ -57,7 +57,7 @@ export const substituteEnvVars = <T>(
             }
         }
 
-        console.debug(`${p.path.toConfigPath().dotPath()}: ${value}`);
+        // console.debug(`${p.path.toConfigPath().dotPath()}: ${value}`);
 
         const path = subSchema
             ? `${subSchema}.${p.path.toConfigPath().dotPath()}`

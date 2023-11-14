@@ -36,7 +36,7 @@ export const createVariableGroup = async (
     };
 
     if (existing) {
-        console.log(`Updating existing variable group: ${cleanName}`);
+        // console.log(`Updating existing variable group: ${cleanName}`);
 
         if (existing.id) {
             try {
@@ -46,25 +46,27 @@ export const createVariableGroup = async (
                 );
 
                 if (res.status === 200) {
+                    //eslint-disable-next-line
                     console.log(`Variable group ${cleanName} updated.`);
                 } else {
+                    //eslint-disable-next-line
                     console.error(`Error updating variable group ${cleanName}`);
                     // console.error(res)
                 }
             } catch (e) {
                 //@ts-ignore
-                console.error(e.response.data);
+                // console.error(e.response.data);
             }
         }
     } else {
-        console.log(`Creating new variable group: ${cleanName}`);
+        // console.log(`Creating new variable group: ${cleanName}`);
 
         const res = await api.createVariableGroup(b);
 
         if (res.status === 200) {
-            console.log(`Variable group ${cleanName} created.`);
+            // console.log(`Variable group ${cleanName} created.`);
         } else {
-            console.error(`Error creating variable group ${cleanName}`);
+            // console.error(`Error creating variable group ${cleanName}`);
         }
     }
 };
@@ -77,7 +79,7 @@ export const upload = async (subSchema: any, options: any) => {
         prompt: true,
     });
 
-    console.log(cliConfig);
+    // console.log(cliConfig);
 
     const appConfig = await figure({
         subSchema: subSchema,

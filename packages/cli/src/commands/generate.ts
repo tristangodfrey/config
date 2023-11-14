@@ -50,8 +50,10 @@ export const generateDeclarationFiles = async (options: any) => {
 
     try {
         await generate(configFolderPath, options.subSchema);
+        //eslint-disable-next-line
         console.log("Configuration package generated");
     } catch (e) {
+        //eslint-disable-next-line
         console.error(e);
     }
 };

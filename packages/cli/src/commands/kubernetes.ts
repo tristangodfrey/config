@@ -93,10 +93,12 @@ export const configMap = async (subSchema: any, options: any) => {
 
 const logOutput = (format: string, value: object) => {
     if (format === "json") {
+        //eslint-disable-next-line
         console.log(JSON.stringify(value));
     }
 
     if (format === "yaml") {
+        //eslint-disable-next-line
         console.log(
             YAML.stringify(value, { defaultStringType: "QUOTE_DOUBLE" }),
         );

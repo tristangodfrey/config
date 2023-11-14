@@ -84,6 +84,7 @@ program
     .argument("<value>", "Value to set")
     .addOption(OPTION_ENV)
     .action((path, value, options) => {
+        //eslint-disable-next-line
         console.error("Not yet implemented");
     });
 
