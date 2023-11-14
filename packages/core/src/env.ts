@@ -52,7 +52,7 @@ export const substituteEnvVars = <T>(
         let value = process.env[p.value];
 
         if (value) {
-            if (p.type === "boolean") {
+            if (["boolean", "number"].includes(p.type)) {
                 value = JSON.parse(value);
             }
         }
