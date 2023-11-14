@@ -1,6 +1,14 @@
 # Change Log - @figure-config/cli
 
-This log was last generated on Mon, 13 Nov 2023 15:07:00 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Nov 2023 09:59:16 GMT and should not be manually modified.
+
+## 0.0.40
+Tue, 14 Nov 2023 09:59:16 GMT
+
+### Patches
+
+- Fix YAML output for secret
+- Add option to add NODE_ENV to configmap
 
 ## 0.0.39
 Mon, 13 Nov 2023 15:07:00 GMT
