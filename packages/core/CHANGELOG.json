@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.27",
+      "tag": "@figure-config/core_v0.0.27",
+      "date": "Tue, 14 Nov 2023 10:03:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix env substitution"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.26",
       "tag": "@figure-config/core_v0.0.26",
       "date": "Mon, 13 Nov 2023 15:07:00 GMT",

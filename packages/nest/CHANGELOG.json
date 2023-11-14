@@ -2,6 +2,24 @@
   "name": "@figure-config/nest",
   "entries": [
     {
+      "version": "0.0.33",
+      "tag": "@figure-config/nest_v0.0.33",
+      "date": "Tue, 14 Nov 2023 10:03:11 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/cli\" to `0.0.40`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.27`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.27`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.32",
       "tag": "@figure-config/nest_v0.0.32",
       "date": "Mon, 13 Nov 2023 15:07:00 GMT",

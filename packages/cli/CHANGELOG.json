@@ -2,6 +2,29 @@
   "name": "@figure-config/cli",
   "entries": [
     {
+      "version": "0.0.40",
+      "tag": "@figure-config/cli_v0.0.40",
+      "date": "Tue, 14 Nov 2023 10:03:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix YAML output for secret"
+          },
+          {
+            "comment": "Add option to add NODE_ENV to configmap"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.27`"
+          },
+          {
+            "comment": "Updating dependency \"@figure-config/core\" to `0.0.27`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.39",
       "tag": "@figure-config/cli_v0.0.39",
       "date": "Mon, 13 Nov 2023 15:07:00 GMT",
