@@ -2,6 +2,18 @@
   "name": "@figure-config/core",
   "entries": [
     {
+      "version": "0.0.28",
+      "tag": "@figure-config/core_v0.0.28",
+      "date": "Tue, 14 Nov 2023 12:32:28 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix logging"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.27",
       "tag": "@figure-config/core_v0.0.27",
       "date": "Tue, 14 Nov 2023 10:03:11 GMT",
