@@ -12,12 +12,15 @@
 	"@figure-config/cli": "workspace:*",
 	"@figure-config/core": "workspace:*",
 	"rxjs": "^7.8.1",
-	"typescript": "^5.2.2"
+	"typescript": "^5.2.2",
+	"@rushstack/heft-node-rig": "^2.4.16",
+	"@rushstack/heft": "^0.65.4",
+	"@nestjs/core": "^10.3.3",
+	"@nestjs/platform-express": "^10.3.3"
   },
   "scripts": {
-	"build": "tsc",
-	"build:watch": "tsc -w",
-	"test": "bun test"
+	"build": "heft build",
+	"test": "heft test"
   },
   "figure": {
 	"configFolderPath": "./config"
