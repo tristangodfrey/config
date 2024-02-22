@@ -2,6 +2,18 @@
   "name": "@figure-config/nest",
   "entries": [
     {
+      "version": "0.0.36",
+      "tag": "@figure-config/nest_v0.0.36",
+      "date": "Thu, 22 Feb 2024 14:43:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug: custom logger not being used"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.0.35",
       "tag": "@figure-config/nest_v0.0.35",
       "date": "Tue, 14 Nov 2023 15:02:57 GMT",
