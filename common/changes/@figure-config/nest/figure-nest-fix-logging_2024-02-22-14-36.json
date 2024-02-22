@@ -1,0 +1,10 @@
+{
+  "changes": [
+    {
+      "packageName": "@figure-config/nest",
+      "comment": "Fix bug: custom logger not being used",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@figure-config/nest"
+}

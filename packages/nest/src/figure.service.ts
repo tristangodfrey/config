@@ -9,8 +9,8 @@ export class FigureService {
     async init(options?: FigureOptions) {
         if (!this.config) {
             this.config = await figure({
-                ...options,
                 logger: this.logger,
+                ...options,
             });
         }
     }

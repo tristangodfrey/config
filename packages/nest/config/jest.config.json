@@ -1,0 +1,21 @@
+{
+  "extends": "@rushstack/heft-node-rig/profiles/default/config/jest.config.json",
+  "collectCoverage": true,
+  "coverageDirectory": "<rootDir>/coverage",
+  "coverageReporters": ["cobertura", "text"],
+  "collectCoverageFrom": [
+	"dist/**/*.{cjs,js}",
+	"!dist/**/*.d.ts",
+	"!dist/**/*.test.{cjs,js}",
+	"!dist/**/test/**",
+	"!dist/**/__tests__/**",
+	"!dist/**/__fixtures__/**",
+	"!dist/**/__mocks__/**"
+  ],
+  "rootDir": "dist",
+  "roots": ["<rootDir>/dist"],
+  "testMatch": ["<rootDir>/dist/**/*.spec.{cjs,js}"],
+  "clearMocks": false,
+  "resetMocks": false,
+  "restoreMocks": false
+}
